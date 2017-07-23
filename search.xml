@@ -4,6 +4,9 @@
     <title><![CDATA[PAT1001]]></title>
     <url>%2F2017%2F07%2F23%2FPAT1001%2F</url>
     <content type="text"><![CDATA[PAT1001. A+B Format (20) 题目 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;iostream&gt; #include &lt;iomanip&gt;using namespace std;int a[10]; void formatPrint(long long n)&#123; if(n == 0)&#123; cout &lt;&lt; "0" &lt;&lt; endl; &#125;else if(n &lt; 0)&#123; long long num = -n; int i = 0; while(num != 0)&#123; a[i] = num%1000; num = num/1000; i++; &#125; cout &lt;&lt; "-" ; if(n &gt; -1000)&#123; cout &lt;&lt; a[0] &lt;&lt; endl; &#125;else&#123; i--; cout &lt;&lt; a[i] &lt;&lt; ","; for(i--; i &gt; 0; i--)&#123; cout &lt;&lt; setfill('0') &lt;&lt; setw(3) &lt;&lt; a[i] &lt;&lt; ","; &#125; cout &lt;&lt; setfill('0') &lt;&lt; setw(3) &lt;&lt; a[0] &lt;&lt; endl; &#125; &#125;else&#123; long long num = n; int i = 0; while(num != 0)&#123; a[i] = num%1000; num = num/1000; i++; &#125; if(n &lt; 1000)&#123; cout &lt;&lt; a[0] &lt;&lt; endl; &#125;else&#123; i--; cout &lt;&lt; a[i] &lt;&lt; ","; for(i--; i &gt; 0; i--)&#123; cout &lt;&lt; setfill('0') &lt;&lt; setw(3) &lt;&lt; a[i] &lt;&lt; ","; &#125; cout &lt;&lt; setfill('0') &lt;&lt; setw(3) &lt;&lt; a[0] &lt;&lt; endl; &#125; &#125;&#125;int main()&#123; long long a, b; cin &gt;&gt; a &gt;&gt; b; formatPrint(a+b); return 0;&#125; 总结这是PAT的第一题，分值只有20分，相对比较简单，需要注意的是格式，以及了解了一下C++中对规范的设置有： &gt;cout &lt;&lt; setfill(&apos;0&apos;) &lt;&lt; setw(3) &lt;&lt; a[0] &lt;&lt; endl; 代表宽度为三，不足补零。]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
       <tags>
         <tag>PAT</tag>
       </tags>
