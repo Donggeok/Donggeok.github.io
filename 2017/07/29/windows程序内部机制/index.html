@@ -489,72 +489,76 @@
     
         <h1 id="windows程序内部运行机制"><a href="#windows程序内部运行机制" class="headerlink" title="windows程序内部运行机制"></a>windows程序内部运行机制</h1><h2 id="窗口和句柄"><a href="#窗口和句柄" class="headerlink" title="窗口和句柄"></a>窗口和句柄</h2><p>在Windows应用程序中，窗口是通过窗口句柄（HWND）来标识的。要对一个窗口操作，首先获得该窗口的句柄。同时，系统在创建资源（窗口、图标、光标等）时会分配内存，并且返回标识这些资源的标识号，即句柄。</p>
 <h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>在Windows程序中，消息是由MSG结构体来表示的。其结构定义如下： </p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">    <span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagMSG <span class="token punctuation">{</span>
-        HWND hwnd<span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//消息所属窗口</span>
-        UINT message<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//消息标识符</span>
-        WPARAM wParam<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//消息附加信息</span>
-        LPARAM lParam<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//消息附加信息</span>
-        DWORD time<span class="token punctuation">;</span>
-        POINT pt<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagMSG <span class="token punctuation">{</span>
+    HWND hwnd<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//消息所属窗口</span>
+    UINT message<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//消息标识符</span>
+    WPARAM wParam<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//消息附加信息</span>
+    LPARAM lParam<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//消息附加信息</span>
+    DWORD time<span class="token punctuation">;</span>
+    POINT pt<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="WinMain函数"><a href="#WinMain函数" class="headerlink" title="WinMain函数"></a>WinMain函数</h2><p>WinMain函数原型声明如下：</p>
-<pre><code>int WINAPI WinMain(
-    HINSTANCE hInstance,        //当前程序运行实例句柄
-    HINSTANCE hPrevInstance,    //当前实例的前一个实例句柄，一般为NULL
-    LPSTR lpCmdLine,            //命令行参数
-    int nCmdShow                
-);
-</code></pre><h1 id="一个完整Win32程序过程"><a href="#一个完整Win32程序过程" class="headerlink" title="一个完整Win32程序过程"></a>一个完整Win32程序过程</h1><h2 id="WinMain函数的定义"><a href="#WinMain函数的定义" class="headerlink" title="WinMain函数的定义"></a>WinMain函数的定义</h2><p>即把上述的WinMain函数。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> WINAPI <span class="token function">WinMain</span><span class="token punctuation">(</span>
+    HINSTANCE hInstance<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//当前程序运行实例句柄</span>
+    HINSTANCE hPrevInstance<span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//当前实例的前一个实例句柄，一般为NULL</span>
+    LPSTR lpCmdLine<span class="token punctuation">,</span>            <span class="token comment" spellcheck="true">//命令行参数</span>
+    <span class="token keyword">int</span> nCmdShow                
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="一个完整Win32程序过程"><a href="#一个完整Win32程序过程" class="headerlink" title="一个完整Win32程序过程"></a>一个完整Win32程序过程</h1><h2 id="WinMain函数的定义"><a href="#WinMain函数的定义" class="headerlink" title="WinMain函数的定义"></a>WinMain函数的定义</h2><p>即把上述的WinMain函数。</p>
 <h2 id="创建一个窗口"><a href="#创建一个窗口" class="headerlink" title="创建一个窗口"></a>创建一个窗口</h2><h3 id="设计一个窗口类"><a href="#设计一个窗口类" class="headerlink" title="设计一个窗口类"></a>设计一个窗口类</h3><p>类似的，我们在设计一个窗口时，只需要将我们修改的部分填充完整即可，Windows已经为我们定义好了，其中定义的结构体就是WNDCLASS，如下：</p>
-<pre><code>typedef struct _WNDCLASS {
-    UINT             style;            //默认为CS_HREDRAW | CS_VREDRAW
-    WNDPROC         lpfnWndProc;    //指向窗口过程函数
-    int                cbClsExtra;        //一般为0
-    int             cbWndExtra;        //一般为0
-    HANDLE            hInstance;
-    HICON            hIcon;
-        //用LoadIcon()函数，如果选用默认图标，则置为NULL，
-    HCURSOR            hCursor;        //用LoadCursor()函数
-    HBRUSH            hbrBackground;    //使用GetStockObject()函数
-    LPCTSTR            lpszMenuName;
-    LPCTSTR            lpszClassName;
-} WNDCLASS;
-</code></pre><h3 id="注册窗口类"><a href="#注册窗口类" class="headerlink" title="注册窗口类"></a>注册窗口类</h3><p>注册函数原型声明如下：</p>
-<pre><code>ATOM RegisterClass(CONST WNDCLASS *lpWndClass);
-</code></pre><h3 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h3><p>设计好窗口类并且成功注册之后，可以使用CreateWindow()函数产生这种类型的窗口，CreateWindow()函数的原型声明如下：</p>
-<pre><code>HWND CreateWindow(
-    LPCTSTR lpClassName,        //窗口类WNDCLASS的lpszClassName成员指定的名称
-    LPCTSTR lpWindowName,        //标题栏名字
-    DWORD dwStyle,                //一般为WS_OVERLAPPEDWINDOW
-    int x,
-    int y,
-    int nWidth,
-    int nHeight,
-    HWND hWndParent,
-    HMENU hMenu,
-    HANDLE hInstance,
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> _WNDCLASS <span class="token punctuation">{</span>
+    UINT             style<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//默认为CS_HREDRAW | CS_VREDRAW</span>
+    WNDPROC         lpfnWndProc<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//指向窗口过程函数</span>
+    <span class="token keyword">int</span>                cbClsExtra<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//一般为0</span>
+    <span class="token keyword">int</span>             cbWndExtra<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//一般为0</span>
+    HANDLE            hInstance<span class="token punctuation">;</span>
+    HICON            hIcon<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用LoadIcon()函数，如果选用默认图标，则置为NULL，</span>
+    HCURSOR            hCursor<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//用LoadCursor()函数</span>
+    HBRUSH            hbrBackground<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//使用GetStockObject()函数</span>
+    LPCTSTR            lpszMenuName<span class="token punctuation">;</span>
+    LPCTSTR            lpszClassName<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> WNDCLASS<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="注册窗口类"><a href="#注册窗口类" class="headerlink" title="注册窗口类"></a>注册窗口类</h3><p>注册函数原型声明如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">ATOM <span class="token function">RegisterClass</span><span class="token punctuation">(</span>CONST WNDCLASS <span class="token operator">*</span>lpWndClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h3><p>设计好窗口类并且成功注册之后，可以使用CreateWindow()函数产生这种类型的窗口，CreateWindow()函数的原型声明如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">HWND <span class="token function">CreateWindow</span><span class="token punctuation">(</span>
+    LPCTSTR lpClassName<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//窗口类WNDCLASS的lpszClassName成员指定的名称</span>
+    LPCTSTR lpWindowName<span class="token punctuation">,</span>       <span class="token comment" spellcheck="true">//标题栏名字</span>
+    DWORD dwStyle<span class="token punctuation">,</span>              <span class="token comment" spellcheck="true">//一般为WS_OVERLAPPEDWINDOW</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">,</span>
+    <span class="token keyword">int</span> y<span class="token punctuation">,</span>
+    <span class="token keyword">int</span> nWidth<span class="token punctuation">,</span>
+    <span class="token keyword">int</span> nHeight<span class="token punctuation">,</span>
+    HWND hWndParent<span class="token punctuation">,</span>
+    HMENU hMenu<span class="token punctuation">,</span>
+    HANDLE hInstance<span class="token punctuation">,</span>
     LPVOID lpParam
-);
-</code></pre><h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><ol>
-<li><p>显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：</p>
-<pre><code> BOOL ShowWindow(
-     HWND hWnd,
-     int nCmdShow            //一般为SW_SHOWNORMAL
- );
-</code></pre></li>
-<li><p>更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：</p>
-<pre><code> Bool UpdateWindow(
-     HWND hWnd,
- );
-</code></pre><h2 id="消息循环"><a href="#消息循环" class="headerlink" title="消息循环"></a>消息循环</h2><p>创建，显示，更新完一个窗口后，我们需要编写消息循环，不断地从消息队列中取出消息，此时需要调用GetMessage()函数，原型如下：</p>
-<p> BOOL GetMessage(</p>
-<pre><code> LPMSG lpMsg,            //消息MSG结构体
- HWND hWnd,                //一般为NULL,代表调用线程的所有窗口的窗口消息
- UINT wMsgFilterMin,        //一般为0
- UINT wMsgFilterMax        //一般为0
-</code></pre><p> );<br>GetMessage()函数只有在接收到WM_QUIT消息时，才返回0。<br>TranslateMessage()函数用于将虚拟键消息转换为字符消息，可以将WM_KEYDOWN和WM_KEYUP消息组合转化为WM_CHAR消息（该消息的wParam附加参数包含字符的ASCII码），该函数不会修改原有消息，只会产生新的消息并投递倒消息队列中。<br>DispatchMessage()函数分派一个消息到窗口过程，窗口过程函数对消息进行处理。如下图：<br><img src="/pictures/windows1.png" alt=""></p>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><ol>
+<li>显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">ShowWindow</span><span class="token punctuation">(</span>
+ HWND hWnd<span class="token punctuation">,</span>
+ <span class="token keyword">int</span> nCmdShow            <span class="token comment" spellcheck="true">//一般为SW_SHOWNORMAL</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
+<li>更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：<pre class="line-numbers language-cpp"><code class="language-cpp">Bool <span class="token function">UpdateWindow</span><span class="token punctuation">(</span>
+ HWND hWnd<span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="消息循环"><a href="#消息循环" class="headerlink" title="消息循环"></a>消息循环</h2>创建，显示，更新完一个窗口后，我们需要编写消息循环，不断地从消息队列中取出消息，此时需要调用GetMessage()函数，原型如下：<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">GetMessage</span><span class="token punctuation">(</span>
+ LPMSG lpMsg<span class="token punctuation">,</span>            <span class="token comment" spellcheck="true">//消息MSG结构体</span>
+ HWND hWnd<span class="token punctuation">,</span>              <span class="token comment" spellcheck="true">//一般为NULL,代表调用线程的所有窗口的窗口消息</span>
+ UINT wMsgFilterMin<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//一般为0</span>
+ UINT wMsgFilterMax      <span class="token comment" spellcheck="true">//一般为0</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+GetMessage()函数只有在接收到WM_QUIT消息时，才返回0。<br>TranslateMessage()函数用于将虚拟键消息转换为字符消息，可以将WM_KEYDOWN和WM_KEYUP消息组合转化为WM_CHAR消息（该消息的wParam附加参数包含字符的ASCII码），该函数不会修改原有消息，只会产生新的消息并投递倒消息队列中。<br>DispatchMessage()函数分派一个消息到窗口过程，窗口过程函数对消息进行处理。如下图：<br><img src="/pictures/windows1.png" alt=""></li>
 </ol>
 
     
