@@ -539,26 +539,26 @@
     LPVOID         lpParam
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><ol>
-<li>显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：<pre class="line-numbers language-cpp"><code class="language-cpp"> BOOL <span class="token function">ShowWindow</span><span class="token punctuation">(</span>
-     HWND hWnd<span class="token punctuation">,</span>
-     <span class="token keyword">int</span>  nCmdShow            <span class="token comment" spellcheck="true">//一般为SW_SHOWNORMAL</span>
- <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><p>\1. 显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">ShowWindow</span><span class="token punctuation">(</span>
+    HWND hWnd<span class="token punctuation">,</span>
+    <span class="token keyword">int</span>  nCmdShow            <span class="token comment" spellcheck="true">//一般为SW_SHOWNORMAL</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：<pre class="line-numbers language-cpp"><code class="language-cpp"> Bool <span class="token function">UpdateWindow</span><span class="token punctuation">(</span>
-     HWND hWnd<span class="token punctuation">,</span>
- <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<p>\2. 更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">Bool <span class="token function">UpdateWindow</span><span class="token punctuation">(</span>
+    HWND hWnd<span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="消息循环"><a href="#消息循环" class="headerlink" title="消息循环"></a>消息循环</h2>创建，显示，更新完一个窗口后，我们需要编写消息循环，不断地从消息队列中取出消息，此时需要调用GetMessage()函数，原型如下：<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">GetMessage</span><span class="token punctuation">(</span>
- LPMSG lpMsg<span class="token punctuation">,</span>             <span class="token comment" spellcheck="true">//消息MSG结构体</span>
- HWND  hWnd<span class="token punctuation">,</span>              <span class="token comment" spellcheck="true">//一般为NULL,代表调用线程的所有窗口的窗口消息</span>
- UINT  wMsgFilterMin<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//一般为0</span>
- UINT  wMsgFilterMax      <span class="token comment" spellcheck="true">//一般为0</span>
+<h2 id="消息循环"><a href="#消息循环" class="headerlink" title="消息循环"></a>消息循环</h2><p>创建，显示，更新完一个窗口后，我们需要编写消息循环，不断地从消息队列中取出消息，此时需要调用GetMessage()函数，原型如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">GetMessage</span><span class="token punctuation">(</span>
+    LPMSG lpMsg<span class="token punctuation">,</span>             <span class="token comment" spellcheck="true">//消息MSG结构体</span>
+    HWND  hWnd<span class="token punctuation">,</span>              <span class="token comment" spellcheck="true">//一般为NULL,代表调用线程的所有窗口的窗口消息</span>
+    UINT  wMsgFilterMin<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//一般为0</span>
+    UINT  wMsgFilterMax      <span class="token comment" spellcheck="true">//一般为0</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-GetMessage()函数只有在接收到WM_QUIT消息时，才返回0。<br>TranslateMessage()函数用于将虚拟键消息转换为字符消息，可以将WM_KEYDOWN和WM_KEYUP消息组合转化为WM_CHAR消息（该消息的wParam附加参数包含字符的ASCII码），该函数不会修改原有消息，只会产生新的消息并投递倒消息队列中。<br>DispatchMessage()函数分派一个消息到窗口过程，窗口过程函数对消息进行处理。如下图：<br><img src="/pictures/windows1.png" alt=""></li>
-</ol>
+<p>GetMessage()函数只有在接收到WM_QUIT消息时，才返回0。<br>TranslateMessage()函数用于将虚拟键消息转换为字符消息，可以将WM_KEYDOWN和WM_KEYUP消息组合转化为WM_CHAR消息（该消息的wParam附加参数包含字符的ASCII码），该函数不会修改原有消息，只会产生新的消息并投递倒消息队列中。<br>DispatchMessage()函数分派一个消息到窗口过程，窗口过程函数对消息进行处理。如下图：<br><img src="/pictures/windows1.png" alt=""></p>
 
     
 
