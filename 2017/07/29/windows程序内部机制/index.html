@@ -539,13 +539,13 @@
     LPVOID         lpParam
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><p>\1. 显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：</p>
+<h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><p>1.显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">ShowWindow</span><span class="token punctuation">(</span>
     HWND hWnd<span class="token punctuation">,</span>
     <span class="token keyword">int</span>  nCmdShow            <span class="token comment" spellcheck="true">//一般为SW_SHOWNORMAL</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>\2. 更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：</p>
+<p>2.更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">Bool <span class="token function">UpdateWindow</span><span class="token punctuation">(</span>
     HWND hWnd<span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
