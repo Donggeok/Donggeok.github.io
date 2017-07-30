@@ -12,7 +12,7 @@
     
     <title>
         
-            归档: 2017 | 
+            第一个Windows程序 | 
         
         Dong&#39;s Blog
     </title>
@@ -38,7 +38,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Dong">
     <meta name="description" itemprop="description" content="拼搏不一定成功，但不拼搏一定不会成功！">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,实习,windows编程">
 
     <!-- Site Verification -->
     
@@ -67,15 +67,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://donggeok.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2017 | Dong&#39;s Blog">
+    <meta property="og:title" content="第一个Windows程序 | Dong&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="拼搏不一定成功，但不拼搏一定不会成功！">
-    
+    <meta property="og:article:tag" content="实习"> <meta property="og:article:tag" content="windows编程"> 
 
+    
+        <meta property="article:published_time" content="7月 30, 2017" />
+        <meta property="article:modified_time" content="7月 30, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="归档: 2017 | Dong&#39;s Blog">
+    <meta name="twitter:title" content="第一个Windows程序 | Dong&#39;s Blog">
     <meta name="twitter:description" content="拼搏不一定成功，但不拼搏一定不会成功！">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -83,13 +86,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://donggeok.com/archives/2017/index.html" />
+        <link rel="canonical" href="http://donggeok.com/2017/07/30/第一个Windows程序/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dong&#39;s Blog",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Dong",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "拼搏不一定成功，但不拼搏一定不会成功！"
+    },
+    "headline": "第一个Windows程序",
+    "url": "http://donggeok.com/2017/07/30/第一个Windows程序/index.html",
+    "datePublished": "7月 30, 2017",
+    "dateModified": "7月 30, 2017",
+    "description": "拼搏不一定成功，但不拼搏一定不会成功！",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://donggeok.com"
+    }
+}
+</script>
 
 
     
@@ -268,336 +301,251 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/30/第一个Windows程序/">第一个Windows程序</a></p>
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
     </div>
+    -->
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            前言按照上篇博客所...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/30/第一个Windows程序/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Dong's avatar">
-            </div>
-            <div>
-                <strong>Dong</strong>
-                <span>7月 30, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结果"><span class="post-toc-number">3.</span> <span class="post-toc-text">结果</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
                 
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/29/windows程序内部机制/">windows程序内部机制</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/29/windows程序内部机制/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Dong's avatar">
-            </div>
-            <div>
-                <strong>Dong</strong>
-                <span>7月 29, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/23/PAT1001/">PAT1001</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            PAT1001. A+B Format (20)
-题目
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/23/PAT1001/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Dong's avatar">
-            </div>
-            <div>
-                <strong>Dong</strong>
-                <span>7月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/PAT/">PAT</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/23/第一篇博文/">第一篇博文</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            #第一篇博文
-
-我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，Cmd Markdown 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/23/第一篇博文/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Dong's avatar">
-            </div>
-            <div>
-                <strong>Dong</strong>
-                <span>7月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/23/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/23/hello-world/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Dong's avatar">
-            </div>
-            <div>
-                <strong>Dong</strong>
-                <span>7月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                第一个Windows程序
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Dong</strong>
+        <span>7月 30, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0ElEQVR42u3aQVIDMQwEwPz/03Dlkq0ZeRO27PaJosBxm4PwSK+fI9cLGxsbGxsbGxsb+5HsV7zebnf5k8kO13v+/c7KmbGxsbH3ZieHSKjXx323Z8sYnhkbGxv7AHbyMUlhK4pKudvszNjY2NjY1yXq3c/MymR+WdjY2NjYK+zrg7Y7z2IsbGxsbOxZQJMH/e0lzloFX8rSsLGxsR/PnkXz//v1V/vb2NjY2A9mtyuJ+PMGcP78WF/Y2NjYu7JnEc+sKZs/RZJQqY6isLGxsbdm50dZIc1i/bbB/HYHbGxs7IPZs4h/Ntwzi5murxIbGxt7b3ZeWtoitP7IyRsVdaMXGxsbeyN2G98k//S3V7nyucUfDBsbG3tTdv5syMtbHi3lTd+8RVH0t7GxsbE3Za+3dZPy08ZDs2KJjY2NfQK7HYi8q4C1wzptAcPGxsY+jb0y7JjD2tZCHj/d0N/GxsbG3o7dPjNmLYFZuRo+nLCxsbGPYedt3Tqgjxu0SfzUFj9sbGzsvdltKH/bUcpyuFQCsbGxsTdlzzCzuP+GZm1Q0oqRHWxsbOwt2B8ZjinXLCrKwdjY2Nh7s9snRNtIWA/322uKQiVsbGzsrdltxDM7+uxal4Z7sLGxsTdlt+H++lBOiyyGcq5Pgo2Njb01e6UZMHtmtDvMqNjY2NjnsGeBUQLL2wn5CFFyBfWkEjY2NvYW7HZcJv/gPFTKi2UddWFjY2Mfw26fB8njIX9UrDQYsLGxsc9kt6t9WrSlsS2cebsXGxsbe1d2WxjyJkHS9G3bBivBEzY2Nvbe7LZoJYUk2bktVHnwhI2NjX0mO4+H2pHK9aBqVmixsbGxsfNBnGHQk7dp4zZA3RXBxsbGPpK9EtMnT6D1xww2Njb2mez2iPnv3tXEnQ0MYWNjY5/Ang01rhS2T8RSH+xvY2NjYz+Yfc7CxsbGxsbGxsbGfsz6BRryNDaB6AgaAAAAAElFTkSuQmCC">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/windows编程/">windows编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/实习/">实习</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=第一个Windows程序&url=http://donggeok.com/2017/07/30/第一个Windows程序/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=第一个Windows程序&url=http://donggeok.com/2017/07/30/第一个Windows程序/index.html&via=Dong" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://donggeok.com/2017/07/30/第一个Windows程序/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://donggeok.com/2017/07/30/第一个Windows程序/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>按照上篇博客所写的流程，可以创建第一个Windows程序：  </p>
+<blockquote>
+<ol>
+<li>定义WinMain()函数  </li>
+<li>创建一个窗口类<br>2.1 设计窗口<br>2.2 创建窗口<br>2.3 注册窗口<br>2.4 显示，更新窗口  </li>
+<li>消息队列  </li>
+<li>窗口过程函数<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1>```cpp<br>#include <windows.h><br>#include <stdio.h><br>#include <tchar.h></tchar.h></stdio.h></windows.h></li>
+</ol>
+</blockquote>
+<p>LRESULT CALLBACK WindowProc(<br>    HWND   hwnd,<br>    UINT   uMsg,<br>    WPARAM wParam,<br>    LPARAM lParam<br>);</p>
+<p>int WINAPI WinMain(<br>    HINSTANCE    hInstance,        //当前程序运行实例句柄<br>    HINSTANCE    hPrevInstance,    //当前实例的前一个实例句柄，一般为NULL<br>    LPSTR        lpCmdLine,        //命令行参数<br>    int          nCmdShow<br>)<br>{<br>    //设计一个窗口类<br>    WNDCLASS wndcls;<br>    wndcls.cbClsExtra = 0;<br>    wndcls.cbWndExtra = 0;<br>    wndcls.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);<br>    wndcls.hCursor = LoadCursor(NULL, IDC_ARROW);<br>    wndcls.hIcon = LoadIcon(NULL, IDI_QUESTION);<br>    wndcls.hInstance = hInstance;<br>    wndcls.lpfnWndProc = WindowProc;<br>    wndcls.lpszClassName = _T(“donggeok”);<br>    wndcls.lpszMenuName = NULL;<br>    wndcls.style = CS_HREDRAW | CS_VREDRAW;<br>    //注册窗口类<br>    RegisterClass(&amp;wndcls);<br>    //创建窗口<br>    HWND hwnd;<br>    hwnd = CreateWindow(_T(“donggeok”), _T(“hehe”), WS_OVERLAPPEDWINDOW, 0,<br>        0, 600, 400, NULL, NULL, hInstance, NULL);<br>    //显示及更新窗口<br>    ShowWindow(hwnd, SW_NORMAL);<br>    UpdateWindow(hwnd);</p>
+<pre><code>//定义消息结构体，消息循环
+MSG msg;
+while (GetMessage(&amp;msg, NULL, 0, 0)) {
+    TranslateMessage(&amp;msg);
+    DispatchMessage(&amp;msg);
+}
+return msg.wParam;
+</code></pre><p>}</p>
+<p>//消息过程函数<br>LRESULT CALLBACK WindowProc(<br>    HWND   hwnd,<br>    UINT   uMsg,<br>    WPARAM wParam,<br>    LPARAM lParam<br>)<br>{<br>    switch (uMsg) {<br>    case WM_CHAR:<br>    {<br>    char szChar[30] = { 0 };<br>        sprintf_s(szChar, “char code is %c”, wParam);<br>        WCHAR wszStr[256];<br>        memset(wszStr, 0, sizeof(wszStr));<br>        MultiByteToWideChar(CP_ACP, 0, szChar, strlen(szChar) + 1, wszStr, sizeof(wszStr) / sizeof(wszStr[0]));<br>        MessageBox(hwnd, wszStr, _T(“char”), 0);<br>        break;<br>    }<br>    case WM_LBUTTONDOWN:<br>        MessageBox(hwnd, _T(“mouse clicked”), _T(“message”), 0);<br>        HDC hdc;<br>        hdc = GetDC(hwnd);<br>        TextOut(hdc, 0, 50, _T(“heheheh”), strlen(“heheheh”));<br>        ReleaseDC(hwnd, hdc);<br>        break;<br>    case WM_PAINT:<br>        HDC hDc;<br>        PAINTSTRUCT ps;<br>        hDc = BeginPaint(hwnd, &amp;ps);<br>        TextOut(hDc, 0, 0, _T(“aaaaa”), 5);<br>        EndPaint(hwnd, &amp;ps);<br>        break;<br>    case WM_CLOSE:<br>        if (IDYES == MessageBox(hwnd, _T(“really end?”), _T(“message”), MB_YESNO)) {<br>            DestroyWindow(hwnd);<br>        }<br>        break;<br>    case WM_DESTROY:<br>        PostQuitMessage(0);<br>        break;<br>    default:<br>        return DefWindowProc(hwnd, uMsg, wParam, lParam);<br>    }<br>    return 0;<br>}<br>```</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="/pictures/windows2.png" alt="按下键盘a之后"><br><img src="/pictures/windows3.png" alt="鼠标点击之后"><br><img src="/pictures/windows4.png" alt="关闭窗口时"></p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/29/windows程序内部机制/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
