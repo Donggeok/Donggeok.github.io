@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python学习中一些注意点]]></title>
+    <url>%2F2017%2F10%2F11%2FPython%E5%AD%A6%E4%B9%A0%E4%B8%AD%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E7%82%B9%2F</url>
+    <content type="text"><![CDATA[Python学习中一些注意点一、参数默认值使用参数默认值时，必须小心指定了可变动对象时的一个陷阱，Python在执行到def时，就会按照定义创建相关的资源，如下： def prepend(elem, lt = []): lt.insert(0, elem) return lt print(prepend(10)) print(prepend(10, [20, 30, 40])) print(prepend(20)) 结果如下：在上例中，lt默认值设置为[]，由于def是条语句，执行到def的函数定义时就创建了[]，而这个列表对象会一直存在，如果没有指定lt，使用的一直就会使一开始指定的列表对象，因此随着每次调用都不指定lt的值，前置的目标列表都会是同一个列表，因此会出现上面的问题。 想要避免这样的问题，可以将参数默认值设置为None，并且在函数中指定真正的默认值，如下: def prepend(elem, lt = None): lt = lt if lt else [] lt.insert(0, elem) return lt print(prepend(10)) print(prepend(10, [20, 30, 40])) print(prepend(20)) 结果如下：]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python学习中一些比较好的网站]]></title>
     <url>%2F2017%2F09%2F25%2FPython%E5%AD%A6%E4%B9%A0%E4%B8%AD%E5%A5%BD%E7%9A%84%E7%BD%91%E7%AB%99%2F</url>
     <content type="text"><![CDATA[Python学习中一些比较好的网站图解 Python 深拷贝和浅拷贝Python中，对象的赋值，拷贝（深/浅拷贝）之间是有差异的，如果使用的时候不注意，就可能产生意外的结果。 下面本文就通过简单的例子介绍一下这些概念之间的差别。http://python.jobbole.com/82294/]]></content>
