@@ -624,6 +624,7 @@
 1. getline()函数在cin之后使用，需要在cin之后加上cin.ignore()来忽略&#39;\n&#39;，防止getline()使用出错。
 2. 对于书本的ID来说，推荐使用字符串，如果使用了整型，记得在输出结果的时候注意7位格式
 3. 由于c++中没有java里的split函数，所以可以注意一下splitSpace()函数（该函数中的strtok()函数是线程不安全的，由于使用到了静态内存区域），供以后使用。
+4. ios::sync_with_stdio(false);这句的意思是关闭流对象和stdio之间的同步，以提高cin，cout的速度，但是不能共用cin和scanf或者cout和printf。
 </code></pre><pre class="line-numbers language-cpp"><code class="language-cpp">
 <span class="token comment" spellcheck="true">// thread un-safe, single thread is safe</span>
 <span class="token keyword">void</span> <span class="token function">splitSpace</span><span class="token punctuation">(</span>string rawString<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span>subStrings<span class="token punctuation">)</span> <span class="token punctuation">{</span>
