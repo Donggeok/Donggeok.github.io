@@ -12,7 +12,7 @@
     
     <title>
         
-            windows程序内部机制 | 
+            PAT1024 | 
         
         Dong&#39;s Blog
     </title>
@@ -37,8 +37,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Dong">
-    <meta name="description" itemprop="description" content="拼搏不一定成功，但不拼搏一定不会成功！">
-    <meta name="keywords" content="null,实习,windows编程">
+    <meta name="description" itemprop="description" content="PAT1024. Palindromic Number (25)
+题目">
+    <meta name="keywords" content="null,PAT">
 
     <!-- Site Verification -->
     
@@ -67,26 +68,28 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://donggeok.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="windows程序内部机制 | Dong&#39;s Blog">
+    <meta property="og:title" content="PAT1024 | Dong&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="拼搏不一定成功，但不拼搏一定不会成功！">
-    <meta property="og:article:tag" content="实习"> <meta property="og:article:tag" content="windows编程"> 
+    <meta property="og:description" content="PAT1024. Palindromic Number (25)
+题目">
+    <meta property="og:article:tag" content="PAT"> 
 
     
-        <meta property="article:published_time" content="7月 29, 2017" />
-        <meta property="article:modified_time" content="7月 29, 2017" />
+        <meta property="article:published_time" content="2月 25, 2018" />
+        <meta property="article:modified_time" content="2月 25, 2018" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="windows程序内部机制 | Dong&#39;s Blog">
-    <meta name="twitter:description" content="拼搏不一定成功，但不拼搏一定不会成功！">
+    <meta name="twitter:title" content="PAT1024 | Dong&#39;s Blog">
+    <meta name="twitter:description" content="PAT1024. Palindromic Number (25)
+题目">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://donggeok.com" />
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://donggeok.com/2017/07/29/windows程序内部机制/index.html" />
+        <link rel="canonical" href="http://donggeok.com/2018/02/25/PAT1024/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -112,11 +115,12 @@
         },
         "description": "拼搏不一定成功，但不拼搏一定不会成功！"
     },
-    "headline": "windows程序内部机制",
-    "url": "http://donggeok.com/2017/07/29/windows程序内部机制/index.html",
-    "datePublished": "7月 29, 2017",
-    "dateModified": "7月 29, 2017",
-    "description": "拼搏不一定成功，但不拼搏一定不会成功！",
+    "headline": "PAT1024",
+    "url": "http://donggeok.com/2018/02/25/PAT1024/index.html",
+    "datePublished": "2月 25, 2018",
+    "dateModified": "2月 25, 2018",
+    "description": "PAT1024. Palindromic Number (25)
+题目",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://donggeok.com"
@@ -328,7 +332,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#windows程序内部运行机制"><span class="post-toc-number">1.</span> <span class="post-toc-text">windows程序内部运行机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#窗口和句柄"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">窗口和句柄</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#消息"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">消息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WinMain函数"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">WinMain函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一个完整Win32程序过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">一个完整Win32程序过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WinMain函数的定义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">WinMain函数的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建一个窗口"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">创建一个窗口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计一个窗口类"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">设计一个窗口类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注册窗口类"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">注册窗口类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建窗口"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">创建窗口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示及更新窗口"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">显示及更新窗口</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#消息循环"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">消息循环</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编写窗口过程函数"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">编写窗口过程函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PAT1024-Palindromic-Number-25"><span class="post-toc-number">1.</span> <span class="post-toc-text">PAT1024. Palindromic Number (25)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -366,7 +370,7 @@
         
     
             <p class="article-headline-p">
-                windows程序内部机制
+                PAT1024
             </p>
         </div>
 
@@ -385,7 +389,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Dong</strong>
-        <span>7月 29, 2017</span>
+        <span>2月 25, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -407,7 +411,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC00lEQVR42u3ay47iMBAFUP7/p3u2I6HJ3FsO6mCfrBAk2MctdVGP18+R1wsbGxsbGxsbGxv7kexXfL3f//c7+be9P/Wv/by/P9szNjY29gns//zrv0S2W58dSrLutQsbGxv7BHa7idnydwWwes/Y2NjY2KMgNEtCro8VGxsbG3v9K/KEIT/E6yPAxsbGxr6rqJSkInkaMyse/UItDRsbG/vx7Fnh/ndf/0J/GxsbG/uR7PbKS0LXAa9NM36WL2xsbOxd2clg5cro5Ho6MRvoGdbSsLGxsb+QnSy5HtKSZ5M72yPAxsbGPoGdj8i0CUabVMyKWUU4xMbGxj6Snbdpc2Q7gnNXmQkbGxt7V3aSHszG5WclpJWQuVRUwsbGxv5a9r3bXQmKeXIyC3LY2NjYe7PzxdqnZgWjJIDVn2JjY2NvzW4DWD6ak4eiZMWlPWNjY2MfwG6DSh6oZgOU68UmbGxs7BPYdxWMZkfTDga1B42NjY19AnulqHRvQaotP+VHg42NjX0COy/ZtIt9ouifl7qwsbGxT2Dn6cfK6zZ1ScpJ+bPY2NjY57CvwUnzddYknrVv29WxsbGxT2C3P+5XCklJEnJvQoKNjY29N3sWNtpAkqQibTBbSkWwsbGxt2C3sLw9PAt1szujxAkbGxt7U3b+Q3/Wyl0Z+kmaBMU92NjY2Aew26JPMjSZXJ8IdUUAw8bGxv5y9mxEZlZISkr5+VBO28zAxsbG3pWdb+UTrYK2nJS0k7GxsbGx7z2Udiin/TQvfmFjY2Pvyp4FiZzXNhtmYzrRsWJjY2NvzU6C1iwtaRmzMaAo9GJjY2MfwJ4FrZYx23rb+sXGxsbGTkh5MzhZq0146j8VNjY2NnYQuvJ2b3u4bXPiIwEMGxsb+/HsvMlalHLKo5y1GT5eS8PGxsZ+PHvW6M232ALyQykOCBsbG3tT9jkXNjY2NjY2NjY29mOuP7K1w6bLMWShAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACcElEQVR42u3b0U7DMAwF0P3/T8MrEnS7tpOsGqdP00A0p0iJd+09vj76euDh4eHh4eHh4d2M94ivq9//+f7v13/c/uKnv9+vrg0PDw/vJO/FVhvwkoXmS++tDQ8PD+88L7/N5abcWm5ywBTWhoeHh3cz3vMiu3o84OHh4f0H3nPk1dLzR7BgbXh4eHgHeYUP/K1wIY9035a14OHh4cW8agPs5Os39Pfw8PDwnvLKI01xM2weCjdXiIeHh7eZl0e08yihGmc8f6c8dIWHh4e3iFfdoNcOB8wjj8K5h4eHh7eIVx0UyKk5LCnBCyMLeHh4eEd4+SFRHV2tFsdJid8MI/Dw8PAW8SYxxAQ2x+Ph4eG9l9eLDHbECnkbrJm14OHh4S3i9Tb6ybImQfDo3MPDw8Mb85Lx0CTerQ4W5C23KhUPDw9vNy8viBeHrYPHh4eHh/deXj4o0CuO83J52V/Dw8PDuwEvv1k11EiGuqr/Bjw8PLzdvN5V5RUa/8Eh8eIDAB4eHt5xXr7F54FvL5BtHid4eHh4m3n5QH+vBK9+YaC6thcHAx4eHt4GXnULrkax+YBCdRDhEo+Hh4d3hJd/+O+RqhFttTTHw8PDO8nrtbvy288bY+WHjoeHh7eZN2l99QLc5kBA/tDx8PDwNvMe8dUbEci3+EkjDQ8PD+88b9K8z6OE6qPsDRDg4eHhneT1ml554Tu/ouIbDw8P72a8/DZJoTwpnaOhKzw8PLyb8XpxRmGhQcNs48GAh4eHtyiMqA5OVZtbechbPhjw8PDwlvImDbB8i5+PEURFPB4eHt5m3uddeHh4eHh4eHh4N7i+ASvXAl3rYcjQAAAAAElFTkSuQmCC">
     
 </ul>
     
@@ -420,7 +424,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/windows编程/">windows编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/实习/">实习</a>
+        <a class="post_tag-link" href="/tags/PAT/">PAT</a>
     </ul>
     
 
@@ -436,7 +440,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=windows程序内部机制&url=http://donggeok.com/2017/07/29/windows程序内部机制/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PAT1024&url=http://donggeok.com/2018/02/25/PAT1024/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -445,7 +449,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=windows程序内部机制&url=http://donggeok.com/2017/07/29/windows程序内部机制/index.html&via=Dong" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PAT1024&url=http://donggeok.com/2018/02/25/PAT1024/index.html&via=Dong" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -454,7 +458,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://donggeok.com/2017/07/29/windows程序内部机制/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://donggeok.com/2018/02/25/PAT1024/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -463,7 +467,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://donggeok.com/2017/07/29/windows程序内部机制/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://donggeok.com/2018/02/25/PAT1024/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -487,122 +491,116 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="windows程序内部运行机制"><a href="#windows程序内部运行机制" class="headerlink" title="windows程序内部运行机制"></a>windows程序内部运行机制</h1><h2 id="窗口和句柄"><a href="#窗口和句柄" class="headerlink" title="窗口和句柄"></a>窗口和句柄</h2><p>在Windows应用程序中，窗口是通过窗口句柄（HWND）来标识的。要对一个窗口操作，首先获得该窗口的句柄。同时，系统在创建资源（窗口、图标、光标等）时会分配内存，并且返回标识这些资源的标识号，即句柄。</p>
-<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>在Windows程序中，消息是由MSG结构体来表示的。其结构定义如下： </p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> tagMSG <span class="token punctuation">{</span>
-    HWND        hwnd<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//消息所属窗口</span>
-    UINT        message<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//消息标识符</span>
-    WPARAM      wParam<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//消息附加信息</span>
-    LPARAM      lParam<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//消息附加信息</span>
-    DWORD       time<span class="token punctuation">;</span>
-    POINT       pt<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="WinMain函数"><a href="#WinMain函数" class="headerlink" title="WinMain函数"></a>WinMain函数</h2><p>WinMain函数原型声明如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> WINAPI <span class="token function">WinMain</span><span class="token punctuation">(</span>
-    HINSTANCE    hInstance<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//当前程序运行实例句柄</span>
-    HINSTANCE    hPrevInstance<span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//当前实例的前一个实例句柄，一般为NULL</span>
-    LPSTR        lpCmdLine<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//命令行参数</span>
-    <span class="token keyword">int</span>          nCmdShow                
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="一个完整Win32程序过程"><a href="#一个完整Win32程序过程" class="headerlink" title="一个完整Win32程序过程"></a>一个完整Win32程序过程</h1><h2 id="WinMain函数的定义"><a href="#WinMain函数的定义" class="headerlink" title="WinMain函数的定义"></a>WinMain函数的定义</h2><p>即把上述的WinMain函数。</p>
-<h2 id="创建一个窗口"><a href="#创建一个窗口" class="headerlink" title="创建一个窗口"></a>创建一个窗口</h2><h3 id="设计一个窗口类"><a href="#设计一个窗口类" class="headerlink" title="设计一个窗口类"></a>设计一个窗口类</h3><p>类似的，我们在设计一个窗口时，只需要将我们修改的部分填充完整即可，Windows已经为我们定义好了，其中定义的结构体就是WNDCLASS，如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> _WNDCLASS <span class="token punctuation">{</span>
-    UINT            style<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//默认为CS_HREDRAW | CS_VREDRAW</span>
-    WNDPROC         lpfnWndProc<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//指向窗口过程函数</span>
-    <span class="token keyword">int</span>             cbClsExtra<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//一般为0</span>
-    <span class="token keyword">int</span>             cbWndExtra<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//一般为0</span>
-    HANDLE          hInstance<span class="token punctuation">;</span>
-    HICON           hIcon<span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">//用LoadIcon()函数，如果选用默认图标，则置为NULL，</span>
-    HCURSOR         hCursor<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//用LoadCursor()函数</span>
-    HBRUSH          hbrBackground<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//使用GetStockObject()函数</span>
-    LPCTSTR         lpszMenuName<span class="token punctuation">;</span>
-    LPCTSTR         lpszClassName<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> WNDCLASS<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="注册窗口类"><a href="#注册窗口类" class="headerlink" title="注册窗口类"></a>注册窗口类</h3><p>注册函数原型声明如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">ATOM <span class="token function">RegisterClass</span><span class="token punctuation">(</span>CONST WNDCLASS <span class="token operator">*</span>lpWndClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="创建窗口"><a href="#创建窗口" class="headerlink" title="创建窗口"></a>创建窗口</h3><p>设计好窗口类并且成功注册之后，可以使用CreateWindow()函数产生这种类型的窗口，CreateWindow()函数的原型声明如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">HWND <span class="token function">CreateWindow</span><span class="token punctuation">(</span>
-    LPCTSTR        lpClassName<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//窗口类WNDCLASS的lpszClassName成员指定的名称</span>
-    LPCTSTR        lpWindowName<span class="token punctuation">,</span>       <span class="token comment" spellcheck="true">//标题栏名字</span>
-    DWORD          dwStyle<span class="token punctuation">,</span>            <span class="token comment" spellcheck="true">//一般为WS_OVERLAPPEDWINDOW</span>
-    <span class="token keyword">int</span>            x<span class="token punctuation">,</span>
-    <span class="token keyword">int</span>            y<span class="token punctuation">,</span>
-    <span class="token keyword">int</span>            nWidth<span class="token punctuation">,</span>
-    <span class="token keyword">int</span>            nHeight<span class="token punctuation">,</span>
-    HWND           hWndParent<span class="token punctuation">,</span>
-    HMENU          hMenu<span class="token punctuation">,</span>
-    HANDLE         hInstance<span class="token punctuation">,</span>
-    LPVOID         lpParam
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="显示及更新窗口"><a href="#显示及更新窗口" class="headerlink" title="显示及更新窗口"></a>显示及更新窗口</h3><p>1.显示窗口<br>创建窗口之后，需要用ShowWindow()函数让窗口显示出来，ShowWindow()函数原型声明如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">ShowWindow</span><span class="token punctuation">(</span>
-    HWND hWnd<span class="token punctuation">,</span>
-    <span class="token keyword">int</span>  nCmdShow            <span class="token comment" spellcheck="true">//一般为SW_SHOWNORMAL</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>2.更新窗口<br>窗口显现出来后，可以紧接着调用UpdateWindow来刷新窗口，原型如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">Bool <span class="token function">UpdateWindow</span><span class="token punctuation">(</span>
-    HWND hWnd<span class="token punctuation">,</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="消息循环"><a href="#消息循环" class="headerlink" title="消息循环"></a>消息循环</h2><p>创建，显示，更新完一个窗口后，我们需要编写消息循环，不断地从消息队列中取出消息，此时需要调用GetMessage()函数，原型如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">BOOL <span class="token function">GetMessage</span><span class="token punctuation">(</span>
-    LPMSG lpMsg<span class="token punctuation">,</span>             <span class="token comment" spellcheck="true">//消息MSG结构体</span>
-    HWND  hWnd<span class="token punctuation">,</span>              <span class="token comment" spellcheck="true">//一般为NULL,代表调用线程的所有窗口的窗口消息</span>
-    UINT  wMsgFilterMin<span class="token punctuation">,</span>     <span class="token comment" spellcheck="true">//一般为0</span>
-    UINT  wMsgFilterMax      <span class="token comment" spellcheck="true">//一般为0</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>GetMessage()函数只有在接收到WM_QUIT消息时，才返回0。<br>TranslateMessage()函数用于将虚拟键消息转换为字符消息，可以将WM_KEYDOWN和WM_KEYUP消息组合转化为WM_CHAR消息（该消息的wParam附加参数包含字符的ASCII码），该函数不会修改原有消息，只会产生新的消息并投递倒消息队列中。<br>DispatchMessage()函数分派一个消息到窗口过程，窗口过程函数对消息进行处理。如下图：<br><img src="/pictures/windows1.png" alt=""><br>通常我们编写的消息循环代码如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">MSG msg<span class="token punctuation">;</span>
-<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">GetMessage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>msg<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token function">TranlateMessage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">DispatchMessage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="编写窗口过程函数"><a href="#编写窗口过程函数" class="headerlink" title="编写窗口过程函数"></a>编写窗口过程函数</h2><p>完成WinMain()函数创建，以及窗口的设计，注册，创建，显示和更新，消息循环之后，剩下的工作就是编写窗口过程函数，原型如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">LRESULT CALLBACK <span class="token function">WindowProc</span><span class="token punctuation">(</span>
-    HWND   hwnd<span class="token punctuation">,</span>
-    UINT   uMsg<span class="token punctuation">,</span>
-    WPARAM wParam<span class="token punctuation">,</span>
-    LPARAM lParam
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其中大概模板如下：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">LRESULT CALLBACK <span class="token function">WindowProc</span><span class="token punctuation">(</span>
-    HWND   hwnd<span class="token punctuation">,</span>
-    UINT   uMsg<span class="token punctuation">,</span>
-    WPARAM wParam<span class="token punctuation">,</span>
-    LPARAM lParam
-<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">switch</span><span class="token punctuation">(</span>uMsg<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">case</span> WM_CHAR<span class="token operator">:</span>
-            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token keyword">case</span> WM_LBUTTONDOWN<span class="token operator">:</span>
-            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token keyword">case</span> WM_PAINT<span class="token operator">:</span>
-            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token keyword">case</span> WM_CLOSE<span class="token operator">:</span>
-            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token keyword">case</span> WM_DESTROY<span class="token operator">:</span>
-            <span class="token function">PostQuitMessage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token keyword">default</span><span class="token operator">:</span>
-            <span class="token keyword">return</span> <span class="token function">DefWindowProc</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> uMsg<span class="token punctuation">,</span> wParam<span class="token punctuation">,</span> lParam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <h1 id="PAT1024-Palindromic-Number-25"><a href="#PAT1024-Palindromic-Number-25" class="headerlink" title="PAT1024. Palindromic Number (25)"></a>PAT1024. Palindromic Number (25)</h1><hr>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1024" target="_blank" rel="external">题目</a></h2><hr>
+<a id="more"></a>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//long long str2longlong(string numStr) {</span>
+<span class="token comment" spellcheck="true">//    long long num;</span>
+<span class="token comment" spellcheck="true">//    stringstream ss;</span>
+<span class="token comment" spellcheck="true">//    ss &lt;&lt; numStr;</span>
+<span class="token comment" spellcheck="true">//    ss >> num;</span>
+<span class="token comment" spellcheck="true">//    ss.clear();</span>
+<span class="token comment" spellcheck="true">//    return num;</span>
+<span class="token comment" spellcheck="true">//}</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//string longlong2str(long long num) {</span>
+<span class="token comment" spellcheck="true">//    string numStr;</span>
+<span class="token comment" spellcheck="true">//    stringstream ss;</span>
+<span class="token comment" spellcheck="true">//    ss &lt;&lt; num;</span>
+<span class="token comment" spellcheck="true">//    ss >> numStr;</span>
+<span class="token comment" spellcheck="true">//    ss.clear();</span>
+<span class="token comment" spellcheck="true">//    return numStr;</span>
+<span class="token comment" spellcheck="true">//}</span>
+
+<span class="token keyword">bool</span> <span class="token function">isPalindromic</span><span class="token punctuation">(</span>string str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> str<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+string <span class="token function">add</span><span class="token punctuation">(</span>string s1<span class="token punctuation">,</span> string s2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> minLen <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> s2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> s2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> result<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> s1Len <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> s2Len <span class="token operator">=</span> s2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> minLen<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> tmp <span class="token operator">=</span> s1<span class="token punctuation">[</span>s1Len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">+</span> s2<span class="token punctuation">[</span>s2Len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">+</span> carry <span class="token operator">-</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
+        carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>tmp <span class="token operator">></span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            carry <span class="token operator">=</span> tmp <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+            tmp <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        result<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>carry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>carry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    string <span class="token function">resStr</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> resLen <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> resLen<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        resStr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> result<span class="token punctuation">[</span>resLen <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> resStr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ios<span class="token operator">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    string numStr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> maxTimes<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> numStr <span class="token operator">>></span> maxTimes<span class="token punctuation">;</span>
+
+    string <span class="token function">tmpStr</span><span class="token punctuation">(</span>numStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> times <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> maxTimes<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isPalindromic</span><span class="token punctuation">(</span>tmpStr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            string <span class="token function">resTmpStr</span><span class="token punctuation">(</span>tmpStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">reverse</span><span class="token punctuation">(</span>resTmpStr<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> resTmpStr<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            tmpStr <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span>tmpStr<span class="token punctuation">,</span> resTmpStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">++</span>times<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    cout <span class="token operator">&lt;&lt;</span> tmpStr <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> times <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>对于Windows API来说，基本的流程都是这样的，了解这些过程有很大的帮助。</p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此题是考察的是大数的简易相加问题，说实话一开始对于题目要求是 <strong>N (&lt;= 1010)</strong> 个人认为long long整型数是可以满足此题要求的，但总是有第6，8测试点不通过，仔细想了想如果是100步的话，可能真的不行，long long的范围是<strong>-9223372036854775808～+9223372036854775807</strong>。例如，对于99这个数来说，此种加法过程第一步达到198，第二步达到1089，第三步达到10890，以此类推，每2步增加1位。经计算，99第100步能够达到9924442828917149695640474870516109271445388，已经超出了long long的范围，所以需要大数加法，如上述代码所示。</p>
+<p>不过在解决long long和string类型转换的时候也了解到一点知识，直接使用stringstream很快捷也很方便，string转其他类型也是同样的道理：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">str2longlong</span><span class="token punctuation">(</span>string numStr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> num<span class="token punctuation">;</span>
+    stringstream ss<span class="token punctuation">;</span>
+    ss <span class="token operator">&lt;&lt;</span> numStr<span class="token punctuation">;</span>
+    ss <span class="token operator">>></span> num<span class="token punctuation">;</span>
+    ss<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> num<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+string <span class="token function">longlong2str</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    string numStr<span class="token punctuation">;</span>
+    stringstream ss<span class="token punctuation">;</span>
+    ss <span class="token operator">&lt;&lt;</span> num<span class="token punctuation">;</span>
+    ss <span class="token operator">>></span> numStr<span class="token punctuation">;</span>
+    ss<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> numStr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     
 
@@ -622,21 +620,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/07/30/第一个Windows程序/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/07/23/PAT1001/" id="post_nav-older" class="next-content">
+        <a href="/2018/02/24/PAT1022/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
