@@ -487,15 +487,18 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="验证集"><a href="#验证集" class="headerlink" title="验证集"></a>验证集</h2><p>If you wish to apply KNN in practice, proceed as follows:</p>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h2 id="验证集"><a href="#验证集" class="headerlink" title="验证集"></a>验证集</h2><p>If you wish to apply KNN in practice, proceed as follows:</p>
 <ol>
 <li>Split your training data randomly into train/val splits.</li>
 <li>As a rule of thumb, between <strong>70~90%</strong> of your data usually goes to the train split. If there are many hyperparameters to estimate, you should err on the side of having larger validation set,</li>
 <li>验证集是用来测试不同的hyperparameter（超参数）而产生的。因为对于不同的超参数，测试集是万万不能用来测试这些超参数的，训练集只能用来检验该分类器的分类效果，不到最后检测环节是不可以使用的。因此验证集应运而生。</li>
-<li>cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><strong>Overview:</strong>A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</li>
+<li>cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。</li>
 </ol>
+<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p><strong>Overview:</strong>A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
 <p>公式简化如下：</p>
-<center> $$f(x<em>{i},W,b)=Wx</em>{i}+b$$ </center>
+<center>$$f(x<em>{i},W,b)=Wx</em>{i}+b$$</center>
     
 
     
