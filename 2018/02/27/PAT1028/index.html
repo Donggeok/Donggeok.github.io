@@ -498,79 +498,81 @@
         <h1 id="PAT1028-List-Sorting-25"><a href="#PAT1028-List-Sorting-25" class="headerlink" title="PAT1028. List Sorting (25)"></a>PAT1028. List Sorting (25)</h1><hr>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1028" target="_blank" rel="external">题目</a></h2><hr>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-int type = 0;
+<span class="token keyword">int</span> type <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-struct Student {
-    string ID;
-    string name;
-    int score;
+<span class="token keyword">struct</span> Student <span class="token punctuation">{</span>
+    string ID<span class="token punctuation">;</span>
+    string name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> score<span class="token punctuation">;</span>
 
-    bool operator<(const Student &other) const {
-        if (type == 1) {
-            return ID < other.ID;
-        }
-        else if (type == 2) {
-            return name < other.name || !(other.name < name) && ID < other.ID;
-        }
-        else if (type == 3) {
-            return score < other.score || !(other.score < score) && ID < other.ID;
-        }
-        else {
-            throw exception();
-        }
-    }
-};
+    <span class="token keyword">bool</span> <span class="token keyword">operator</span><span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token keyword">const</span> Student <span class="token operator">&amp;</span>other<span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> ID <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>ID<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> name <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>name <span class="token operator">||</span> <span class="token operator">!</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>name <span class="token operator">&lt;</span> name<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> ID <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>ID<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> score <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>score <span class="token operator">||</span> <span class="token operator">!</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>score <span class="token operator">&lt;</span> score<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> ID <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>ID<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token function">exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-int main() {
-    int numRecord, columnIndex;
-    scanf("%d%d", &numRecord, &columnIndex);
-    type = columnIndex;
-    vector<Student> students;
-    for (int i = 0; i < numRecord; ++i) {
-        char idChar[10], nameChar[10];
-        int score;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> numRecord<span class="token punctuation">,</span> columnIndex<span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>numRecord<span class="token punctuation">,</span> <span class="token operator">&amp;</span>columnIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    type <span class="token operator">=</span> columnIndex<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>Student<span class="token operator">></span> students<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numRecord<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">char</span> idChar<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">,</span> nameChar<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> score<span class="token punctuation">;</span>
 
-        scanf("%s%s%d", idChar, nameChar, &score);
-        Student stu;
-        string id(idChar), name(nameChar);
-        stu.ID = id;
-        stu.name = name;
-        stu.score = score;
-        students.push_back(stu);
-    }
-    sort(students.begin(), students.end(), less<Student>());
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%s%s%d"</span><span class="token punctuation">,</span> idChar<span class="token punctuation">,</span> nameChar<span class="token punctuation">,</span> <span class="token operator">&amp;</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Student stu<span class="token punctuation">;</span>
+        string <span class="token function">id</span><span class="token punctuation">(</span>idChar<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">name</span><span class="token punctuation">(</span>nameChar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span>ID <span class="token operator">=</span> id<span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span>score <span class="token operator">=</span> score<span class="token punctuation">;</span>
+        students<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">sort</span><span class="token punctuation">(</span>students<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> students<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> less<span class="token operator">&lt;</span>Student<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    for (auto stu : students) {
-        printf("%s %s %d\n", stu.ID.c_str(), stu.name.c_str(), stu.score);
-    }
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> stu <span class="token operator">:</span> students<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s %s %d\n"</span><span class="token punctuation">,</span> stu<span class="token punctuation">.</span>ID<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> stu<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> stu<span class="token punctuation">.</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题非常简单，简单的可以直接到20分的题中了，不过还是一次没提交成功，主要原因是对于多数据<strong>N (&lt;=100000)</strong>的输入输出还是需要scanf和printf啊，很快，即使取消了同步的cin和cout还是要慢很多……搞得我想直接放弃cin和cout了……</p>
 <p>另一种读入string的方法是</p>
-<pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-for (int i = 0; i < numRecord; ++i) {
-        Student stu;
-        string id, name;
-        int score;
-        id.resize(10);
-        name.resize(10);
-        scanf("%s%s%d", id.c_str(), name.c_str(), &score);
-        stu.ID = id;
-        stu.name = name;
-        stu.score = score;
-        students.push_back(stu);
-    }
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numRecord<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Student stu<span class="token punctuation">;</span>
+        string id<span class="token punctuation">,</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> score<span class="token punctuation">;</span>
+        id<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        name<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%s%s%d"</span><span class="token punctuation">,</span> id<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> name<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span>ID <span class="token operator">=</span> id<span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        stu<span class="token punctuation">.</span>score <span class="token operator">=</span> score<span class="token punctuation">;</span>
+        students<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>stu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>两者速度相差不多。</p>
 
     

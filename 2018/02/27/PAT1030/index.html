@@ -498,107 +498,108 @@
         <h1 id="PAT1030-Travel-Plan-30"><a href="#PAT1030-Travel-Plan-30" class="headerlink" title="PAT1030. Travel Plan (30)"></a>PAT1030. Travel Plan (30)</h1><hr>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1030" target="_blank" rel="external">题目</a></h2><hr>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <vector>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-const int inf = 99999999;
+<span class="token keyword">const</span> <span class="token keyword">int</span> inf <span class="token operator">=</span> <span class="token number">99999999</span><span class="token punctuation">;</span>
 
-vector<vector<int>> getPathFromStartToThisPoint(int point, vector<vector<int>> &pre) {
-    if (pre[point][0] == -1) {
-        return vector<vector<int>>(1, vector<int>(1, point));
-    }
-    else {
-        vector<vector<int>> childpath;
-        vector<vector<int>> resultpath;
-        for (int i = 0; i < pre[point].size(); ++i) {
-            childpath = getPathFromStartToThisPoint(pre[point][i], pre);
-            for (int j = 0; j < childpath.size(); ++j) {
-                childpath[j].push_back(point);
-            }
-            if (resultpath.empty()) {
-                resultpath = childpath;
-            }
-            else {
-                resultpath.insert(resultpath.end(), childpath.begin(), childpath.end());
-            }
-        }
-        return resultpath;
-    }
-}
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">getPathFromStartToThisPoint</span><span class="token punctuation">(</span><span class="token keyword">int</span> point<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token operator">&amp;</span>pre<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pre<span class="token punctuation">[</span>point<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> point<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> childpath<span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> resultpath<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> pre<span class="token punctuation">[</span>point<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            childpath <span class="token operator">=</span> <span class="token function">getPathFromStartToThisPoint</span><span class="token punctuation">(</span>pre<span class="token punctuation">[</span>point<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> pre<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> childpath<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                childpath<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>resultpath<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                resultpath <span class="token operator">=</span> childpath<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                resultpath<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>resultpath<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> childpath<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> childpath<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> resultpath<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
 
-int main() {
-    int cityNum, highwayNum, start, destination;
-    cin >> cityNum >> highwayNum >> start >> destination;
-    vector<vector<int>> Graph(cityNum, vector<int>(cityNum, inf));
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> cityNum<span class="token punctuation">,</span> highwayNum<span class="token punctuation">,</span> start<span class="token punctuation">,</span> destination<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> cityNum <span class="token operator">>></span> highwayNum <span class="token operator">>></span> start <span class="token operator">>></span> destination<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">Graph</span><span class="token punctuation">(</span>cityNum<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>cityNum<span class="token punctuation">,</span> inf<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    vector<vector<int>> Cost(cityNum, vector<int>(cityNum, inf));
-    vector<bool> visited(cityNum, false);
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">Cost</span><span class="token punctuation">(</span>cityNum<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>cityNum<span class="token punctuation">,</span> inf<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token function">visited</span><span class="token punctuation">(</span>cityNum<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    for (int i = 0; i < highwayNum; ++i) {
-        int c1, c2, dist, cost;
-        cin >> c1 >> c2 >> dist >> cost;
-        Graph[c1][c2] = dist;
-        Graph[c2][c1] = dist;
-        Cost[c1][c2] = cost;
-        Cost[c2][c1] = cost;
-    }
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> highwayNum<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> c1<span class="token punctuation">,</span> c2<span class="token punctuation">,</span> dist<span class="token punctuation">,</span> cost<span class="token punctuation">;</span>
+        cin <span class="token operator">>></span> c1 <span class="token operator">>></span> c2 <span class="token operator">>></span> dist <span class="token operator">>></span> cost<span class="token punctuation">;</span>
+        Graph<span class="token punctuation">[</span>c1<span class="token punctuation">]</span><span class="token punctuation">[</span>c2<span class="token punctuation">]</span> <span class="token operator">=</span> dist<span class="token punctuation">;</span>
+        Graph<span class="token punctuation">[</span>c2<span class="token punctuation">]</span><span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">=</span> dist<span class="token punctuation">;</span>
+        Cost<span class="token punctuation">[</span>c1<span class="token punctuation">]</span><span class="token punctuation">[</span>c2<span class="token punctuation">]</span> <span class="token operator">=</span> cost<span class="token punctuation">;</span>
+        Cost<span class="token punctuation">[</span>c2<span class="token punctuation">]</span><span class="token punctuation">[</span>c1<span class="token punctuation">]</span> <span class="token operator">=</span> cost<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    vector<vector<int>> pre(cityNum);
-    pre[start].push_back(-1);
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">pre</span><span class="token punctuation">(</span>cityNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pre<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    vector<int> shortestDist(cityNum, inf);
-    shortestDist[start] = 0;
-    //dijkstra
-    for (int i = 0; i < cityNum; ++i) {
-        // choose point
-        int min = inf;
-        int index = -1;
-        for (int j = 0; j < cityNum; ++j) {
-            if (!visited[j] && min > shortestDist[j]) {
-                min = shortestDist[j];
-                index = j;
-            }
-        }
-        visited[index] = true;
-        // relax
-        for (int j = 0; j < cityNum; ++j) {
-            if (shortestDist[j] > shortestDist[index] + Graph[index][j]) {
-                shortestDist[j] = shortestDist[index] + Graph[index][j];
-                pre[j].clear();
-                pre[j].push_back(index);
-            }
-            else if (shortestDist[j] == shortestDist[index] + Graph[index][j]) {
-                pre[j].push_back(index);
-            }
-        }
-    }
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">shortestDist</span><span class="token punctuation">(</span>cityNum<span class="token punctuation">,</span> inf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    shortestDist<span class="token punctuation">[</span>start<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//dijkstra</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cityNum<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// choose point</span>
+        <span class="token keyword">int</span> min <span class="token operator">=</span> inf<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> cityNum<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> min <span class="token operator">></span> shortestDist<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                min <span class="token operator">=</span> shortestDist<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                index <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        visited<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// relax</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> cityNum<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>shortestDist<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> shortestDist<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">+</span> Graph<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                shortestDist<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> shortestDist<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">+</span> Graph<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                pre<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                pre<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>shortestDist<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> shortestDist<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">+</span> Graph<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                pre<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    vector<vector<int>> paths = getPathFromStartToThisPoint(destination, pre);
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> paths <span class="token operator">=</span> <span class="token function">getPathFromStartToThisPoint</span><span class="token punctuation">(</span>destination<span class="token punctuation">,</span> pre<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    int minCost = inf;
-    int minIndex = -1;
-    for (int j = 0; j < paths.size(); ++j) {
-        int costtmp = 0;
-        for (int i = 0; i < paths[j].size() - 1; ++i) {
-            costtmp += Cost[paths[j][i]][paths[j][i + 1]];
-        }
-        if (minCost > costtmp) {
-            minCost = costtmp;
-            minIndex = j;
-        }
-    }
-    for (auto elem : paths[minIndex]) {
-        cout << elem << " ";
-    }
-    cout << shortestDist[destination] << " " << minCost;
+    <span class="token keyword">int</span> minCost <span class="token operator">=</span> inf<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> minIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> paths<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> costtmp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> paths<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            costtmp <span class="token operator">+</span><span class="token operator">=</span> Cost<span class="token punctuation">[</span>paths<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span>paths<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>minCost <span class="token operator">></span> costtmp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            minCost <span class="token operator">=</span> costtmp<span class="token punctuation">;</span>
+            minIndex <span class="token operator">=</span> j<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> elem <span class="token operator">:</span> paths<span class="token punctuation">[</span>minIndex<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> elem <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    cout <span class="token operator">&lt;&lt;</span> shortestDist<span class="token punctuation">[</span>destination<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> <span class="token operator">&lt;&lt;</span> minCost<span class="token punctuation">;</span>
 
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题和<a href="http://donggeok.com/2018/02/24/PAT1018/">PAT1018</a>非常类似，甚至比1018要简单，原理还是一样：找出所有最短路径，再按照题中要求求得最符合要求的哪一条路径即可。</p>
 <p>图数据结构（二维矩阵）中同一点之间的距离不再初始化为0，而是初始化为无穷大，防止在之后添加前向点的时候把自身这个点也添加进去，稍微改进了一下dijkstra部分的代码，以及回溯路径的代码，但实际上差不多。</p>

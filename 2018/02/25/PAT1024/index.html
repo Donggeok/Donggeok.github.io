@@ -498,113 +498,117 @@
         <h1 id="PAT1024-Palindromic-Number-25"><a href="#PAT1024-Palindromic-Number-25" class="headerlink" title="PAT1024. Palindromic Number (25)"></a>PAT1024. Palindromic Number (25)</h1><hr>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1024" target="_blank" rel="external">题目</a></h2><hr>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <algorithm>
-#include <vector>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-//long long str2longlong(string numStr) {
-//    long long num;
-//    stringstream ss;
-//    ss << numStr;
-//    ss >> num;
-//    ss.clear();
-//    return num;
-//}
-//
-//string longlong2str(long long num) {
-//    string numStr;
-//    stringstream ss;
-//    ss << num;
-//    ss >> numStr;
-//    ss.clear();
-//    return numStr;
-//}
+<span class="token comment" spellcheck="true">//long long str2longlong(string numStr) {</span>
+<span class="token comment" spellcheck="true">//    long long num;</span>
+<span class="token comment" spellcheck="true">//    stringstream ss;</span>
+<span class="token comment" spellcheck="true">//    ss &lt;&lt; numStr;</span>
+<span class="token comment" spellcheck="true">//    ss >> num;</span>
+<span class="token comment" spellcheck="true">//    ss.clear();</span>
+<span class="token comment" spellcheck="true">//    return num;</span>
+<span class="token comment" spellcheck="true">//}</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//string longlong2str(long long num) {</span>
+<span class="token comment" spellcheck="true">//    string numStr;</span>
+<span class="token comment" spellcheck="true">//    stringstream ss;</span>
+<span class="token comment" spellcheck="true">//    ss &lt;&lt; num;</span>
+<span class="token comment" spellcheck="true">//    ss >> numStr;</span>
+<span class="token comment" spellcheck="true">//    ss.clear();</span>
+<span class="token comment" spellcheck="true">//    return numStr;</span>
+<span class="token comment" spellcheck="true">//}</span>
 
-bool isPalindromic(string str) {
-    int len = str.size();
-    for (int i = 0; i < len /2; ++i) {
-        if (str[i] != str[len - 1 - i]) {
-            return false;
-        }
-    }
-    return true;
-}
+<span class="token keyword">bool</span> <span class="token function">isPalindromic</span><span class="token punctuation">(</span>string str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len <span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> str<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-string add(string s1, string s2) {
-    int minLen = s1.size() < s2.size() ? s1.size() : s2.size();
-    vector<int> result;
-    int s1Len = s1.size();
-    int s2Len = s2.size();
-    int carry = 0;
-    for (int i = 0; i < minLen; ++i) {
-        int tmp = s1[s1Len - 1 - i] + s2[s2Len - 1 - i] + carry - 2 * '0';
-        carry = 0;
-        if (tmp > 9) {
-            carry = tmp / 10;
-            tmp -= 10;
-        }
-        result.push_back(tmp);
-    }
-    if (carry) {
-        result.push_back(carry);
-    }
-    string resStr(result.size(), '0');
-    int resLen = result.size();
-    for (int i = 0; i < resLen; ++i) {
-        resStr[i] = result[resLen - 1 - i] + '0';
-    }
-    return resStr;
-}
+string <span class="token function">add</span><span class="token punctuation">(</span>string s1<span class="token punctuation">,</span> string s2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> minLen <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> s2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> s2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> result<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> s1Len <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> s2Len <span class="token operator">=</span> s2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> minLen<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> tmp <span class="token operator">=</span> s1<span class="token punctuation">[</span>s1Len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">+</span> s2<span class="token punctuation">[</span>s2Len <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">+</span> carry <span class="token operator">-</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
+        carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>tmp <span class="token operator">></span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            carry <span class="token operator">=</span> tmp <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+            tmp <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        result<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>carry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>carry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    string <span class="token function">resStr</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> resLen <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> resLen<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        resStr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> result<span class="token punctuation">[</span>resLen <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> resStr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-int main() {
-    ios::sync_with_stdio(false);
-    string numStr;
-    int maxTimes;
-    cin >> numStr >> maxTimes;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ios<span class="token operator">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    string numStr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> maxTimes<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> numStr <span class="token operator">>></span> maxTimes<span class="token punctuation">;</span>
 
-    string tmpStr(numStr);
-    int times = 0;
+    string <span class="token function">tmpStr</span><span class="token punctuation">(</span>numStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> times <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    for (int i = 0; i < maxTimes; ++i) {
-        if (!isPalindromic(tmpStr)) {
-            string resTmpStr(tmpStr);
-            reverse(resTmpStr.begin(), resTmpStr.end());
-            tmpStr = add(tmpStr, resTmpStr);
-            ++times;
-        }
-    }
-    cout << tmpStr << endl;
-    cout << times << endl;
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> maxTimes<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isPalindromic</span><span class="token punctuation">(</span>tmpStr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            string <span class="token function">resTmpStr</span><span class="token punctuation">(</span>tmpStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">reverse</span><span class="token punctuation">(</span>resTmpStr<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> resTmpStr<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            tmpStr <span class="token operator">=</span> <span class="token function">add</span><span class="token punctuation">(</span>tmpStr<span class="token punctuation">,</span> resTmpStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">++</span>times<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    cout <span class="token operator">&lt;&lt;</span> tmpStr <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> times <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此题是考察的是大数的简易相加问题，说实话一开始对于题目要求是 <strong>N (&lt;= 1000000000)</strong> 个人认为long long整型数是可以满足此题要求的，但总是有第6，8测试点不通过，仔细想了想如果是100步的话，可能真的不行，long long的范围是<strong>-9223372036854775808～+9223372036854775807</strong>。例如，对于99这个数来说，此种加法过程第一步达到198，第二步达到1089，第三步达到10890，以此类推，每2步增加1位。经计算，99第100步能够达到9924442828917149695640474870516109271445388，已经超出了long long的范围，所以需要大数加法，如上述代码所示。</p>
 <p>不过在解决long long和string类型转换的时候也了解到一点知识，直接使用stringstream很快捷也很方便，string转其他类型也是同样的道理：</p>
-<pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-long long str2longlong(string numStr) {
-    long long num;
-    stringstream ss;
-    ss << numStr;
-    ss >> num;
-    ss.clear();
-    return num;
-}
+<pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">str2longlong</span><span class="token punctuation">(</span>string numStr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> num<span class="token punctuation">;</span>
+    stringstream ss<span class="token punctuation">;</span>
+    ss <span class="token operator">&lt;&lt;</span> numStr<span class="token punctuation">;</span>
+    ss <span class="token operator">>></span> num<span class="token punctuation">;</span>
+    ss<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> num<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-string longlong2str(long long num) {
-    string numStr;
-    stringstream ss;
-    ss << num;
-    ss >> numStr;
-    ss.clear();
-    return numStr;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+string <span class="token function">longlong2str</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    string numStr<span class="token punctuation">;</span>
+    stringstream ss<span class="token punctuation">;</span>
+    ss <span class="token operator">&lt;&lt;</span> num<span class="token punctuation">;</span>
+    ss <span class="token operator">>></span> numStr<span class="token punctuation">;</span>
+    ss<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> numStr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     
 

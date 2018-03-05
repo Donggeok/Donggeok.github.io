@@ -501,101 +501,101 @@
 </ol>
 </blockquote>
 <hr>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <windows.h>
-#include <stdio.h>
-#include <tchar.h>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tchar.h></span></span>
 
-LRESULT CALLBACK WindowProc(
-    HWND   hwnd,
-    UINT   uMsg,
-    WPARAM wParam,
+LRESULT CALLBACK <span class="token function">WindowProc</span><span class="token punctuation">(</span>
+    HWND   hwnd<span class="token punctuation">,</span>
+    UINT   uMsg<span class="token punctuation">,</span>
+    WPARAM wParam<span class="token punctuation">,</span>
     LPARAM lParam
-);
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-int WINAPI WinMain(
-    HINSTANCE    hInstance,        //当前程序运行实例句柄
-    HINSTANCE    hPrevInstance,    //当前实例的前一个实例句柄，一般为NULL
-    LPSTR        lpCmdLine,        //命令行参数
-    int          nCmdShow
-)
-{
-    //设计一个窗口类
-    WNDCLASS wndcls;
-    wndcls.cbClsExtra = 0;
-    wndcls.cbWndExtra = 0;
-    wndcls.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-    wndcls.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wndcls.hIcon = LoadIcon(NULL, IDI_QUESTION);
-    wndcls.hInstance = hInstance;
-    wndcls.lpfnWndProc = WindowProc;
-    wndcls.lpszClassName = _T("donggeok");
-    wndcls.lpszMenuName = NULL;
-    wndcls.style = CS_HREDRAW | CS_VREDRAW;
-    //注册窗口类
-    RegisterClass(&wndcls);
-    //创建窗口
-    HWND hwnd;
-    hwnd = CreateWindow(_T("donggeok"), _T("hehe"), WS_OVERLAPPEDWINDOW, 0,
-        0, 600, 400, NULL, NULL, hInstance, NULL);
-    //显示及更新窗口
-    ShowWindow(hwnd, SW_NORMAL);
-    UpdateWindow(hwnd);
+<span class="token keyword">int</span> WINAPI <span class="token function">WinMain</span><span class="token punctuation">(</span>
+    HINSTANCE    hInstance<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//当前程序运行实例句柄</span>
+    HINSTANCE    hPrevInstance<span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">//当前实例的前一个实例句柄，一般为NULL</span>
+    LPSTR        lpCmdLine<span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//命令行参数</span>
+    <span class="token keyword">int</span>          nCmdShow
+<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//设计一个窗口类</span>
+    WNDCLASS <span class="token class-name">wndcls</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>cbClsExtra <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>cbWndExtra <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>hbrBackground <span class="token operator">=</span> <span class="token punctuation">(</span>HBRUSH<span class="token punctuation">)</span><span class="token function">GetStockObject</span><span class="token punctuation">(</span>BLACK_BRUSH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>hCursor <span class="token operator">=</span> <span class="token function">LoadCursor</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> IDC_ARROW<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>hIcon <span class="token operator">=</span> <span class="token function">LoadIcon</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> IDI_QUESTION<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>hInstance <span class="token operator">=</span> hInstance<span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>lpfnWndProc <span class="token operator">=</span> WindowProc<span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>lpszClassName <span class="token operator">=</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"donggeok"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>lpszMenuName <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    wndcls<span class="token punctuation">.</span>style <span class="token operator">=</span> CS_HREDRAW <span class="token operator">|</span> CS_VREDRAW<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//注册窗口类</span>
+    <span class="token function">RegisterClass</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>wndcls<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//创建窗口</span>
+    HWND hwnd<span class="token punctuation">;</span>
+    hwnd <span class="token operator">=</span> <span class="token function">CreateWindow</span><span class="token punctuation">(</span><span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"donggeok"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"hehe"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> WS_OVERLAPPEDWINDOW<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> hInstance<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//显示及更新窗口</span>
+    <span class="token function">ShowWindow</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> SW_NORMAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UpdateWindow</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    //定义消息结构体，消息循环
-    MSG msg;
-    while (GetMessage(&msg, NULL, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-    return msg.wParam;
-}
+    <span class="token comment" spellcheck="true">//定义消息结构体，消息循环</span>
+    MSG msg<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">GetMessage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>msg<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">TranslateMessage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">DispatchMessage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> msg<span class="token punctuation">.</span>wParam<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-//消息过程函数
-LRESULT CALLBACK WindowProc(
-    HWND   hwnd,
-    UINT   uMsg,
-    WPARAM wParam,
+<span class="token comment" spellcheck="true">//消息过程函数</span>
+LRESULT CALLBACK <span class="token function">WindowProc</span><span class="token punctuation">(</span>
+    HWND   hwnd<span class="token punctuation">,</span>
+    UINT   uMsg<span class="token punctuation">,</span>
+    WPARAM wParam<span class="token punctuation">,</span>
     LPARAM lParam
-)
-{
-    switch (uMsg) {
-    case WM_CHAR:
-    {
-    char szChar[30] = { 0 };
-        sprintf_s(szChar, "char code is %c", wParam);
-        WCHAR wszStr[256];
-        memset(wszStr, 0, sizeof(wszStr));
-        MultiByteToWideChar(CP_ACP, 0, szChar, strlen(szChar) + 1, wszStr, sizeof(wszStr) / sizeof(wszStr[0]));
-        MessageBox(hwnd, wszStr, _T("char"), 0);
-        break;
-    }    
-    case WM_LBUTTONDOWN:
-        MessageBox(hwnd, _T("mouse clicked"), _T("message"), 0);
-        HDC hdc;
-        hdc = GetDC(hwnd);
-        TextOut(hdc, 0, 50, _T("heheheh"), strlen("heheheh"));
-        ReleaseDC(hwnd, hdc);
-        break;
-    case WM_PAINT:
-        HDC hDc;
-        PAINTSTRUCT ps;
-        hDc = BeginPaint(hwnd, &ps);
-        TextOut(hDc, 0, 0, _T("aaaaa"), 5);
-        EndPaint(hwnd, &ps);
-        break;
-    case WM_CLOSE:
-        if (IDYES == MessageBox(hwnd, _T("really end?"), _T("message"), MB_YESNO)) {
-            DestroyWindow(hwnd);
-        }
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hwnd, uMsg, wParam, lParam);
-    }
-    return 0;
-}
+<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>uMsg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> WM_CHAR<span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> szChar<span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token function">sprintf_s</span><span class="token punctuation">(</span>szChar<span class="token punctuation">,</span> <span class="token string">"char code is %c"</span><span class="token punctuation">,</span> wParam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        WCHAR wszStr<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">memset</span><span class="token punctuation">(</span>wszStr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>wszStr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">MultiByteToWideChar</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> szChar<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span>szChar<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> wszStr<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>wszStr<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>wszStr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">MessageBox</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> wszStr<span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"char"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>    
+    <span class="token keyword">case</span> WM_LBUTTONDOWN<span class="token operator">:</span>
+        <span class="token function">MessageBox</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"mouse clicked"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        HDC hdc<span class="token punctuation">;</span>
+        hdc <span class="token operator">=</span> <span class="token function">GetDC</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">TextOut</span><span class="token punctuation">(</span>hdc<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"heheheh"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token string">"heheheh"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">ReleaseDC</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> hdc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> WM_PAINT<span class="token operator">:</span>
+        HDC hDc<span class="token punctuation">;</span>
+        PAINTSTRUCT ps<span class="token punctuation">;</span>
+        hDc <span class="token operator">=</span> <span class="token function">BeginPaint</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ps<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">TextOut</span><span class="token punctuation">(</span>hDc<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"aaaaa"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">EndPaint</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>ps<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> WM_CLOSE<span class="token operator">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>IDYES <span class="token operator">==</span> <span class="token function">MessageBox</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"really end?"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_T</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> MB_YESNO<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">DestroyWindow</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> WM_DESTROY<span class="token operator">:</span>
+        <span class="token function">PostQuitMessage</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token function">DefWindowProc</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> uMsg<span class="token punctuation">,</span> wParam<span class="token punctuation">,</span> lParam<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="/pictures/windows2.png" alt="按下键盘a之后"><br><img src="/pictures/windows3.PNG" alt="鼠标点击之后"><br><img src="/pictures/windows4.PNG" alt="关闭窗口时"></p>
 
