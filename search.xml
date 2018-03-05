@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[cs231n笔记一]]></title>
     <url>%2F2018%2F03%2F05%2Fcs231n%E7%AC%94%E8%AE%B0%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[验证集If you wish to apply KNN in practice, proceed as follows: Split your training data randomly into train/val splits. As a rule of thumb, between 70~90% of your data usually goes to the train split. If there are many hyperparameters to estimate, you should err on the side of having larger validation set, 验证集是用来测试不同的hyperparameter（超参数）而产生的。因为对于不同的超参数，测试集是万万不能用来测试这些超参数的，训练集只能用来检验该分类器的分类效果，不到最后检测环节是不可以使用的。因此验证集应运而生。 cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。 Linear ClassificationOverview: A powerful approach to image classification will have two major components: score function and loss function. 公式简化如下：a+b=c]]></content>
+    <content type="text"><![CDATA[验证集If you wish to apply KNN in practice, proceed as follows: Split your training data randomly into train/val splits. As a rule of thumb, between 70~90% of your data usually goes to the train split. If there are many hyperparameters to estimate, you should err on the side of having larger validation set, 验证集是用来测试不同的hyperparameter（超参数）而产生的。因为对于不同的超参数，测试集是万万不能用来测试这些超参数的，训练集只能用来检验该分类器的分类效果，不到最后检测环节是不可以使用的。因此验证集应运而生。 cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。 Linear ClassificationOverview: A powerful approach to image classification will have two major components: score function and loss function. 公式简化如下： a+b=c]]></content>
       <tags>
         <tag>cs231n</tag>
       </tags>
