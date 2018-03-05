@@ -37,7 +37,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Dong">
-    <meta name="description" itemprop="description" content="拼搏不一定成功，但不拼搏一定不会成功！">
+    <meta name="description" itemprop="description" content="Just Do It！">
     <meta name="keywords" content="null,cs231n">
 
     <!-- Site Verification -->
@@ -69,7 +69,7 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="cs231n笔记一 | Dong&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="拼搏不一定成功，但不拼搏一定不会成功！">
+    <meta property="og:description" content="Just Do It！">
     <meta property="og:article:tag" content="cs231n"> 
 
     
@@ -79,7 +79,7 @@
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="cs231n笔记一 | Dong&#39;s Blog">
-    <meta name="twitter:description" content="拼搏不一定成功，但不拼搏一定不会成功！">
+    <meta name="twitter:description" content="Just Do It！">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://donggeok.com" />
@@ -116,7 +116,7 @@
     "url": "http://donggeok.com/2018/03/05/cs231n笔记一/index.html",
     "datePublished": "3月 05, 2018",
     "dateModified": "3月 05, 2018",
-    "description": "拼搏不一定成功，但不拼搏一定不会成功！",
+    "description": "Just Do It！",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://donggeok.com"
@@ -328,7 +328,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证集"><span class="post-toc-number">1.</span> <span class="post-toc-text">验证集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Linear-Classification"><span class="post-toc-number">2.</span> <span class="post-toc-text">Linear Classification</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证集"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 验证集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#linear-classification"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Linear Classification</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -487,16 +487,27 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="验证集"><a href="#验证集" class="headerlink" title="验证集"></a>验证集</h2><p>If you wish to apply KNN in practice, proceed as follows:</p>
+        <h2 id="验证集"><a class="markdownIt-Anchor" href="#验证集"></a> 验证集</h2>
+<p>If you wish to apply KNN in practice, proceed as follows:</p>
 <ol>
 <li>Split your training data randomly into train/val splits.</li>
 <li>As a rule of thumb, between <strong>70~90%</strong> of your data usually goes to the train split. If there are many hyperparameters to estimate, you should err on the side of having larger validation set,</li>
 <li>验证集是用来测试不同的hyperparameter（超参数）而产生的。因为对于不同的超参数，测试集是万万不能用来测试这些超参数的，训练集只能用来检验该分类器的分类效果，不到最后检测环节是不可以使用的。因此验证集应运而生。</li>
 <li>cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。</li>
 </ol>
-<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p><strong>Overview:</strong>A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
+<h2 id="linear-classification"><a class="markdownIt-Anchor" href="#linear-classification"></a> Linear Classification</h2>
+<p>**Overview:**A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
 <p>公式简化如下：</p>
-<script type="math/tex; mode=display">f(x_{i},W,b)=Wx_{i}+b</script>
+<p>\begin{aligned}<br>
+f_Y(y) &amp; = f_X[h(y)]|h’(y)| \[2ex]<br>
+&amp; = f_X[h(y)]h’(y) \[2ex]<br>
+&amp; = \frac{1}{\theta}e^{-\frac{x}{\theta}}[\frac{dx}{dy}(-\frac{\theta}{ln(1-y)})] \[2ex]<br>
+&amp; = \frac{1}{\theta}e^{-\frac{-\frac{\theta}{ln(1-y)}}{\theta}}\frac{\theta}{1-y} \[2ex]<br>
+&amp; = \frac{1}{\theta}e^{ln(1-y)}\frac{\theta}{1-y} \[2ex]<br>
+&amp; = \frac{1-y}{\theta}\frac{\theta}{1-y} \[2ex]<br>
+&amp; = 1<br>
+\end{aligned}</p>
+
     
 
     

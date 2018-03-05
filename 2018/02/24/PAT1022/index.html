@@ -37,8 +37,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Dong">
-    <meta name="description" itemprop="description" content="PAT1022. Digital Library (30)
-题目">
+    <meta name="description" itemprop="description" content=" PAT1022. Digital Library (30)
+
+ 题目
+">
     <meta name="keywords" content="null,PAT">
 
     <!-- Site Verification -->
@@ -70,8 +72,10 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="PAT1022 | Dong&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="PAT1022. Digital Library (30)
-题目">
+    <meta property="og:description" content=" PAT1022. Digital Library (30)
+
+ 题目
+">
     <meta property="og:article:tag" content="PAT"> 
 
     
@@ -81,8 +85,10 @@
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="PAT1022 | Dong&#39;s Blog">
-    <meta name="twitter:description" content="PAT1022. Digital Library (30)
-题目">
+    <meta name="twitter:description" content=" PAT1022. Digital Library (30)
+
+ 题目
+">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://donggeok.com" />
@@ -119,8 +125,10 @@
     "url": "http://donggeok.com/2018/02/24/PAT1022/index.html",
     "datePublished": "2月 24, 2018",
     "dateModified": "2月 25, 2018",
-    "description": "PAT1022. Digital Library (30)
-题目",
+    "description": " PAT1022. Digital Library (30)
+
+ 题目
+",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://donggeok.com"
@@ -332,7 +340,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PAT1022-Digital-Library-30"><span class="post-toc-number">1.</span> <span class="post-toc-text">PAT1022. Digital Library (30)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pat1022-digital-library-30"><span class="post-toc-number">1.</span> <span class="post-toc-text"> PAT1022. Digital Library (30)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 题目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 总结</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -491,153 +499,160 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="PAT1022-Digital-Library-30"><a href="#PAT1022-Digital-Library-30" class="headerlink" title="PAT1022. Digital Library (30)"></a>PAT1022. Digital Library (30)</h1><hr>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1022" target="_blank" rel="external">题目</a></h2><hr>
-<a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <vector>
-#include <cstring>
-#include <string>
-#include <map>
-#include <functional>
-#include <algorithm>
-
-using namespace std;
-
-// thread un-safe, single thread is safe
-void splitSpace(string rawString, vector<string> &subStrings) {
-    char rawChars[60];
-    strcpy(rawChars, rawString.c_str());
-    char* pch = strtok(rawChars, " ");
-    while (pch != NULL) {
-        string subString(pch);
-        subStrings.push_back(subString);
-        pch = strtok(NULL, " ");
-    }
-}
-
-void storeInfo(map<string, vector<string>> &storeMap, string key, string ID) {
-    // exist
-    if (storeMap.find(key) != storeMap.end()) {
-        storeMap[key].push_back(ID);
-    }
-    // not exist
-    else {
-        vector<string> tmp;
-        tmp.push_back(ID);
-        storeMap.insert(make_pair(key, tmp));
-    }
-}
-
-void printInfo(map<string, vector<string>> &storeMap, string key) {
-    // exist
-    if (storeMap.find(key) != storeMap.end()) {
-        vector<string> tmp = storeMap[key];
-        sort(tmp.begin(), tmp.end(), less<string>());
-        for (auto elem : tmp) {
-            cout << elem << endl;
-        }
-    }
-    // not exist
-    else {
-        cout << "Not Found" << endl;
-    }
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    int numBook;
-    cin >> numBook;
-
-    // data struct
-    map<string, vector<string>> titleMaps;
-    map<string, vector<string>> authorMaps;
-    map<string, vector<string>> keywordMaps;
-    map<string, vector<string>> publisherMaps;
-    map<string, vector<string>> yearMaps;
-
-    for (int i = 0; i < numBook; ++i) {
-        string ID, title, author, publisher, rawKeywords, year;
-        vector<string> keywords;
-
-        cin >> ID;
-        cin.ignore();
-        getline(cin, title);
-        getline(cin, author);
-        getline(cin, rawKeywords);
-        splitSpace(rawKeywords, keywords);
-        getline(cin, publisher);
-        getline(cin, year);
-        // store infomation
-        storeInfo(titleMaps, title, ID);
-        storeInfo(authorMaps, author, ID);
-        for (auto elem : keywords) {
-            storeInfo(keywordMaps, elem, ID);
-        }
-        storeInfo(publisherMaps, publisher, ID);
-        storeInfo(yearMaps, year, ID);
-    }
-
-    int numQuery;
-    vector<string> entryQuerys;
-    cin >> numQuery;
-    cin.ignore();
-
-    for (int i = 0; i < numQuery; ++i) {
-        string entry;
-        getline(cin, entry);
-        entryQuerys.push_back(entry);
-    }
-
-    // print
-    for (auto item : entryQuerys) {
-        cout << item << endl;
-        char type = item[0];
-        switch (type)
-        {
-        case '1':
-            printInfo(titleMaps, item.substr(3, item.size() - 3));
-            break;
-        case '2':
-            printInfo(authorMaps, item.substr(3, item.size() - 3));
-            break;
-        case '3':
-            printInfo(keywordMaps, item.substr(3, item.size() - 3));
-            break;
-        case '4':
-            printInfo(publisherMaps, item.substr(3, item.size() - 3));
-            break;
-        case '5':
-            printInfo(yearMaps, item.substr(3, item.size() - 3));
-            break;
-        default:
-            break;
-        }
-    }
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <h1 id="pat1022-digital-library-30"><a class="markdownIt-Anchor" href="#pat1022-digital-library-30"></a> PAT1022. Digital Library (30)</h1>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题相对比较简单（在30分的类别中来说），更多的是对输入数据和存储数据，以及调用数据的考察。使用STL中的map数据结构为主。</p>
+<h2 id="题目"><a class="markdownIt-Anchor" href="#题目"></a> <a href="https://www.patest.cn/contests/pat-a-practise/1022" target="_blank" rel="external">题目</a></h2>
+<hr>
+<a id="more"></a>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<pre class="highlight"><code class="cpp">
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span>
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+
+<span class="comment">// thread un-safe, single thread is safe</span>
+<span class="function"><span class="keyword">void</span> <span class="title">splitSpace</span><span class="params">(<span class="built_in">string</span> rawString, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;subStrings)</span> </span>{
+	<span class="keyword">char</span> rawChars[<span class="number">60</span>];
+	<span class="built_in">strcpy</span>(rawChars, rawString.c_str());
+	<span class="keyword">char</span>* pch = strtok(rawChars, <span class="string">" "</span>);
+	<span class="keyword">while</span> (pch != <span class="literal">NULL</span>) {
+		<span class="function"><span class="built_in">string</span> <span class="title">subString</span><span class="params">(pch)</span></span>;
+		subStrings.push_back(subString);
+		pch = strtok(<span class="literal">NULL</span>, <span class="string">" "</span>);
+	}
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">storeInfo</span><span class="params">(<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; &amp;storeMap, <span class="built_in">string</span> key, <span class="built_in">string</span> ID)</span> </span>{
+	<span class="comment">// exist</span>
+	<span class="keyword">if</span> (storeMap.find(key) != storeMap.end()) {
+		storeMap[key].push_back(ID);
+	}
+	<span class="comment">// not exist</span>
+	<span class="keyword">else</span> {
+		<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tmp;
+		tmp.push_back(ID);
+		storeMap.insert(make_pair(key, tmp));
+	}
+}
+
+<span class="function"><span class="keyword">void</span> <span class="title">printInfo</span><span class="params">(<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; &amp;storeMap, <span class="built_in">string</span> key)</span> </span>{
+	<span class="comment">// exist</span>
+	<span class="keyword">if</span> (storeMap.find(key) != storeMap.end()) {
+		<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tmp = storeMap[key];
+		sort(tmp.begin(), tmp.end(), less&lt;<span class="built_in">string</span>&gt;());
+		<span class="keyword">for</span> (<span class="keyword">auto</span> elem : tmp) {
+			<span class="built_in">cout</span> &lt;&lt; elem &lt;&lt; <span class="built_in">endl</span>;
+		}
+	}
+	<span class="comment">// not exist</span>
+	<span class="keyword">else</span> {
+		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Not Found"</span> &lt;&lt; <span class="built_in">endl</span>;
+	}
+}
+
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{
+	ios::sync_with_stdio(<span class="literal">false</span>);
+	<span class="keyword">int</span> numBook;
+	<span class="built_in">cin</span> &gt;&gt; numBook;
+
+	<span class="comment">// data struct</span>
+	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; titleMaps;
+	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; authorMaps;
+	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; keywordMaps;
+	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; publisherMaps;
+	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; yearMaps;
+
+	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numBook; ++i) {
+		<span class="built_in">string</span> ID, title, author, publisher, rawKeywords, year;
+		<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; keywords;
+
+		<span class="built_in">cin</span> &gt;&gt; ID;
+		<span class="built_in">cin</span>.ignore();
+		getline(<span class="built_in">cin</span>, title);
+		getline(<span class="built_in">cin</span>, author);
+		getline(<span class="built_in">cin</span>, rawKeywords);
+		splitSpace(rawKeywords, keywords);
+		getline(<span class="built_in">cin</span>, publisher);
+		getline(<span class="built_in">cin</span>, year);
+		<span class="comment">// store infomation</span>
+		storeInfo(titleMaps, title, ID);
+		storeInfo(authorMaps, author, ID);
+		<span class="keyword">for</span> (<span class="keyword">auto</span> elem : keywords) {
+			storeInfo(keywordMaps, elem, ID);
+		}
+		storeInfo(publisherMaps, publisher, ID);
+		storeInfo(yearMaps, year, ID);
+	}
+
+	<span class="keyword">int</span> numQuery;
+	<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; entryQuerys;
+	<span class="built_in">cin</span> &gt;&gt; numQuery;
+	<span class="built_in">cin</span>.ignore();
+
+	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numQuery; ++i) {
+		<span class="built_in">string</span> entry;
+		getline(<span class="built_in">cin</span>, entry);
+		entryQuerys.push_back(entry);
+	}
+
+	<span class="comment">// print</span>
+	<span class="keyword">for</span> (<span class="keyword">auto</span> item : entryQuerys) {
+		<span class="built_in">cout</span> &lt;&lt; item &lt;&lt; <span class="built_in">endl</span>;
+		<span class="keyword">char</span> type = item[<span class="number">0</span>];
+		<span class="keyword">switch</span> (type)
+		{
+		<span class="keyword">case</span> <span class="string">'1'</span>:
+			printInfo(titleMaps, item.substr(<span class="number">3</span>, item.size() - <span class="number">3</span>));
+			<span class="keyword">break</span>;
+		<span class="keyword">case</span> <span class="string">'2'</span>:
+			printInfo(authorMaps, item.substr(<span class="number">3</span>, item.size() - <span class="number">3</span>));
+			<span class="keyword">break</span>;
+		<span class="keyword">case</span> <span class="string">'3'</span>:
+			printInfo(keywordMaps, item.substr(<span class="number">3</span>, item.size() - <span class="number">3</span>));
+			<span class="keyword">break</span>;
+		<span class="keyword">case</span> <span class="string">'4'</span>:
+			printInfo(publisherMaps, item.substr(<span class="number">3</span>, item.size() - <span class="number">3</span>));
+			<span class="keyword">break</span>;
+		<span class="keyword">case</span> <span class="string">'5'</span>:
+			printInfo(yearMaps, item.substr(<span class="number">3</span>, item.size() - <span class="number">3</span>));
+			<span class="keyword">break</span>;
+		<span class="keyword">default</span>:
+			<span class="keyword">break</span>;
+		}
+	}
+	<span class="keyword">return</span> <span class="number">0</span>;
+}
+
+</code></pre>
+<hr>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>这道题相对比较简单（在30分的类别中来说），更多的是对输入数据和存储数据，以及调用数据的考察。使用STL中的map数据结构为主。</p>
 <pre><code>注意几个要点：
-1. getline()函数在cin之后使用，需要在cin之后加上cin.ignore()来忽略&#39;\n&#39;，防止getline()使用出错。
+1. getline()函数在cin之后使用，需要在cin之后加上cin.ignore()来忽略'\n'，防止getline()使用出错。
 2. 对于书本的ID来说，推荐使用字符串，如果使用了整型，记得在输出结果的时候注意7位格式
 3. 由于c++中没有java里的split函数，所以可以注意一下splitSpace()函数（该函数中的strtok()函数是线程不安全的，由于使用到了静态内存区域），供以后使用。
 4. ios::sync_with_stdio(false);这句的意思是关闭流对象和stdio之间的同步，以提高cin，cout的速度，但是不能共用cin和scanf或者cout和printf。
-</code></pre><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-// thread un-safe, single thread is safe
-void splitSpace(string rawString, vector<string> &subStrings) {
-    char rawChars[60];
-    strcpy(rawChars, rawString.c_str());
-    char* pch = strtok(rawChars, " ");
-    while (pch != NULL) {
-        string subString(pch);
-        subStrings.push_back(subString);
-        pch = strtok(NULL, " ");
-    }
+</code></pre>
+<pre class="highlight"><code class="cpp">
+<span class="comment">// thread un-safe, single thread is safe</span>
+<span class="function"><span class="keyword">void</span> <span class="title">splitSpace</span><span class="params">(<span class="built_in">string</span> rawString, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;subStrings)</span> </span>{
+	<span class="keyword">char</span> rawChars[<span class="number">60</span>];
+	<span class="built_in">strcpy</span>(rawChars, rawString.c_str());
+	<span class="keyword">char</span>* pch = strtok(rawChars, <span class="string">" "</span>);
+	<span class="keyword">while</span> (pch != <span class="literal">NULL</span>) {
+		<span class="function"><span class="built_in">string</span> <span class="title">subString</span><span class="params">(pch)</span></span>;
+		subStrings.push_back(subString);
+		pch = strtok(<span class="literal">NULL</span>, <span class="string">" "</span>);
+	}
 }
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</code></pre>
 
     
 

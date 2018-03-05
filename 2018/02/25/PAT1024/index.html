@@ -37,8 +37,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Dong">
-    <meta name="description" itemprop="description" content="PAT1024. Palindromic Number (25)
-题目">
+    <meta name="description" itemprop="description" content=" PAT1024. Palindromic Number (25)
+
+ 题目
+">
     <meta name="keywords" content="null,PAT">
 
     <!-- Site Verification -->
@@ -70,8 +72,10 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="PAT1024 | Dong&#39;s Blog">
     <meta property="og:image" content="/img/favicon.png" />
-    <meta property="og:description" content="PAT1024. Palindromic Number (25)
-题目">
+    <meta property="og:description" content=" PAT1024. Palindromic Number (25)
+
+ 题目
+">
     <meta property="og:article:tag" content="PAT"> 
 
     
@@ -81,8 +85,10 @@
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:title" content="PAT1024 | Dong&#39;s Blog">
-    <meta name="twitter:description" content="PAT1024. Palindromic Number (25)
-题目">
+    <meta name="twitter:description" content=" PAT1024. Palindromic Number (25)
+
+ 题目
+">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://donggeok.com" />
@@ -119,8 +125,10 @@
     "url": "http://donggeok.com/2018/02/25/PAT1024/index.html",
     "datePublished": "2月 25, 2018",
     "dateModified": "2月 27, 2018",
-    "description": "PAT1024. Palindromic Number (25)
-题目",
+    "description": " PAT1024. Palindromic Number (25)
+
+ 题目
+",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://donggeok.com"
@@ -332,7 +340,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PAT1024-Palindromic-Number-25"><span class="post-toc-number">1.</span> <span class="post-toc-text">PAT1024. Palindromic Number (25)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pat1024-palindromic-number-25"><span class="post-toc-number">1.</span> <span class="post-toc-text"> PAT1024. Palindromic Number (25)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 题目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 总结</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -491,116 +499,124 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="PAT1024-Palindromic-Number-25"><a href="#PAT1024-Palindromic-Number-25" class="headerlink" title="PAT1024. Palindromic Number (25)"></a>PAT1024. Palindromic Number (25)</h1><hr>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1024" target="_blank" rel="external">题目</a></h2><hr>
-<a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <algorithm>
-#include <vector>
-
-using namespace std;
-
-//long long str2longlong(string numStr) {
-//    long long num;
-//    stringstream ss;
-//    ss << numStr;
-//    ss >> num;
-//    ss.clear();
-//    return num;
-//}
-//
-//string longlong2str(long long num) {
-//    string numStr;
-//    stringstream ss;
-//    ss << num;
-//    ss >> numStr;
-//    ss.clear();
-//    return numStr;
-//}
-
-bool isPalindromic(string str) {
-    int len = str.size();
-    for (int i = 0; i < len /2; ++i) {
-        if (str[i] != str[len - 1 - i]) {
-            return false;
-        }
-    }
-    return true;
-}
-
-string add(string s1, string s2) {
-    int minLen = s1.size() < s2.size() ? s1.size() : s2.size();
-    vector<int> result;
-    int s1Len = s1.size();
-    int s2Len = s2.size();
-    int carry = 0;
-    for (int i = 0; i < minLen; ++i) {
-        int tmp = s1[s1Len - 1 - i] + s2[s2Len - 1 - i] + carry - 2 * '0';
-        carry = 0;
-        if (tmp > 9) {
-            carry = tmp / 10;
-            tmp -= 10;
-        }
-        result.push_back(tmp);
-    }
-    if (carry) {
-        result.push_back(carry);
-    }
-    string resStr(result.size(), '0');
-    int resLen = result.size();
-    for (int i = 0; i < resLen; ++i) {
-        resStr[i] = result[resLen - 1 - i] + '0';
-    }
-    return resStr;
-}
-
-int main() {
-    ios::sync_with_stdio(false);
-    string numStr;
-    int maxTimes;
-    cin >> numStr >> maxTimes;
-
-    string tmpStr(numStr);
-    int times = 0;
-
-    for (int i = 0; i < maxTimes; ++i) {
-        if (!isPalindromic(tmpStr)) {
-            string resTmpStr(tmpStr);
-            reverse(resTmpStr.begin(), resTmpStr.end());
-            tmpStr = add(tmpStr, resTmpStr);
-            ++times;
-        }
-    }
-    cout << tmpStr << endl;
-    cout << times << endl;
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <h1 id="pat1024-palindromic-number-25"><a class="markdownIt-Anchor" href="#pat1024-palindromic-number-25"></a> PAT1024. Palindromic Number (25)</h1>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>此题是考察的是大数的简易相加问题，说实话一开始对于题目要求是 <strong>N (&lt;= 1000000000)</strong> 个人认为long long整型数是可以满足此题要求的，但总是有第6，8测试点不通过，仔细想了想如果是100步的话，可能真的不行，long long的范围是<strong>-9223372036854775808～+9223372036854775807</strong>。例如，对于99这个数来说，此种加法过程第一步达到198，第二步达到1089，第三步达到10890，以此类推，每2步增加1位。经计算，99第100步能够达到9924442828917149695640474870516109271445388，已经超出了long long的范围，所以需要大数加法，如上述代码所示。</p>
-<p>不过在解决long long和string类型转换的时候也了解到一点知识，直接使用stringstream很快捷也很方便，string转其他类型也是同样的道理：</p>
-<pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-long long str2longlong(string numStr) {
-    long long num;
-    stringstream ss;
-    ss << numStr;
-    ss >> num;
-    ss.clear();
-    return num;
+<h2 id="题目"><a class="markdownIt-Anchor" href="#题目"></a> <a href="https://www.patest.cn/contests/pat-a-practise/1024" target="_blank" rel="external">题目</a></h2>
+<hr>
+<a id="more"></a>
+<h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
+<pre class="highlight"><code class="cpp">
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span>
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+
+<span class="comment">//long long str2longlong(string numStr) {</span>
+<span class="comment">//	long long num;</span>
+<span class="comment">//	stringstream ss;</span>
+<span class="comment">//	ss &lt;&lt; numStr;</span>
+<span class="comment">//	ss &gt;&gt; num;</span>
+<span class="comment">//	ss.clear();</span>
+<span class="comment">//	return num;</span>
+<span class="comment">//}</span>
+<span class="comment">//</span>
+<span class="comment">//string longlong2str(long long num) {</span>
+<span class="comment">//	string numStr;</span>
+<span class="comment">//	stringstream ss;</span>
+<span class="comment">//	ss &lt;&lt; num;</span>
+<span class="comment">//	ss &gt;&gt; numStr;</span>
+<span class="comment">//	ss.clear();</span>
+<span class="comment">//	return numStr;</span>
+<span class="comment">//}</span>
+
+<span class="function"><span class="keyword">bool</span> <span class="title">isPalindromic</span><span class="params">(<span class="built_in">string</span> str)</span> </span>{
+	<span class="keyword">int</span> len = str.size();
+	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len /<span class="number">2</span>; ++i) {
+		<span class="keyword">if</span> (str[i] != str[len - <span class="number">1</span> - i]) {
+			<span class="keyword">return</span> <span class="literal">false</span>;
+		}
+	}
+	<span class="keyword">return</span> <span class="literal">true</span>;
 }
 
-string longlong2str(long long num) {
-    string numStr;
-    stringstream ss;
-    ss << num;
-    ss >> numStr;
-    ss.clear();
-    return numStr;
+<span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> s1, <span class="built_in">string</span> s2)</span> </span>{
+	<span class="keyword">int</span> minLen = s1.size() &lt; s2.size() ? s1.size() : s2.size();
+	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;
+	<span class="keyword">int</span> s1Len = s1.size();
+	<span class="keyword">int</span> s2Len = s2.size();
+	<span class="keyword">int</span> carry = <span class="number">0</span>;
+	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; minLen; ++i) {
+		<span class="keyword">int</span> tmp = s1[s1Len - <span class="number">1</span> - i] + s2[s2Len - <span class="number">1</span> - i] + carry - <span class="number">2</span> * <span class="string">'0'</span>;
+		carry = <span class="number">0</span>;
+		<span class="keyword">if</span> (tmp &gt; <span class="number">9</span>) {
+			carry = tmp / <span class="number">10</span>;
+			tmp -= <span class="number">10</span>;
+		}
+		result.push_back(tmp);
+	}
+	<span class="keyword">if</span> (carry) {
+		result.push_back(carry);
+	}
+	<span class="function"><span class="built_in">string</span> <span class="title">resStr</span><span class="params">(result.size()</span>, '0')</span>;
+	<span class="keyword">int</span> resLen = result.size();
+	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; resLen; ++i) {
+		resStr[i] = result[resLen - <span class="number">1</span> - i] + <span class="string">'0'</span>;
+	}
+	<span class="keyword">return</span> resStr;
 }
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{
+	ios::sync_with_stdio(<span class="literal">false</span>);
+	<span class="built_in">string</span> numStr;
+	<span class="keyword">int</span> maxTimes;
+	<span class="built_in">cin</span> &gt;&gt; numStr &gt;&gt; maxTimes;
+
+	<span class="function"><span class="built_in">string</span> <span class="title">tmpStr</span><span class="params">(numStr)</span></span>;
+	<span class="keyword">int</span> times = <span class="number">0</span>;
+
+	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxTimes; ++i) {
+		<span class="keyword">if</span> (!isPalindromic(tmpStr)) {
+			<span class="function"><span class="built_in">string</span> <span class="title">resTmpStr</span><span class="params">(tmpStr)</span></span>;
+			reverse(resTmpStr.begin(), resTmpStr.end());
+			tmpStr = add(tmpStr, resTmpStr);
+			++times;
+		}
+	}
+	<span class="built_in">cout</span> &lt;&lt; tmpStr &lt;&lt; <span class="built_in">endl</span>;
+	<span class="built_in">cout</span> &lt;&lt; times &lt;&lt; <span class="built_in">endl</span>;
+	<span class="keyword">return</span> <span class="number">0</span>;
+}
+
+
+</code></pre>
+<hr>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>此题是考察的是大数的简易相加问题，说实话一开始对于题目要求是 <strong>N (&lt;= 1000000000)</strong> 个人认为long long整型数是可以满足此题要求的，但总是有第6，8测试点不通过，仔细想了想如果是100步的话，可能真的不行，long long的范围是**-9223372036854775808～+9223372036854775807**。例如，对于99这个数来说，此种加法过程第一步达到198，第二步达到1089，第三步达到10890，以此类推，每2步增加1位。经计算，99第100步能够达到9924442828917149695640474870516109271445388，已经超出了long long的范围，所以需要大数加法，如上述代码所示。</p>
+<p>不过在解决long long和string类型转换的时候也了解到一点知识，直接使用stringstream很快捷也很方便，string转其他类型也是同样的道理：</p>
+<pre class="highlight"><code class="cpp">
+<span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">str2longlong</span><span class="params">(<span class="built_in">string</span> numStr)</span> </span>{
+	<span class="keyword">long</span> <span class="keyword">long</span> num;
+	<span class="built_in">stringstream</span> ss;
+	ss &lt;&lt; numStr;
+	ss &gt;&gt; num;
+	ss.clear();
+	<span class="keyword">return</span> num;
+}
+
+<span class="function"><span class="built_in">string</span> <span class="title">longlong2str</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> num)</span> </span>{
+	<span class="built_in">string</span> numStr;
+	<span class="built_in">stringstream</span> ss;
+	ss &lt;&lt; num;
+	ss &gt;&gt; numStr;
+	ss.clear();
+	<span class="keyword">return</span> numStr;
+}
+
+
+</code></pre>
 
     
 
