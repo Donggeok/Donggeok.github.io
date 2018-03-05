@@ -496,8 +496,8 @@
 <li>cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。</li>
 </ol>
 <h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p><strong>Overview:</strong> A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
-<p>公式简化如下：</p>
-<center>$$f(x_{i},W,b)=Wx_{i}+b$$</center>
+<p>公式简化如下：<script type="math/tex">a+b=c</script></p>
+
     
 
     
@@ -820,6 +820,38 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src=theme.cdn.mathjax + "/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <!-- UC Browser Compatible -->
