@@ -487,9 +487,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<h2 id="验证集"><a href="#验证集" class="headerlink" title="验证集"></a>验证集</h2><p>If you wish to apply KNN in practice, proceed as follows:</p>
+        <h2 id="验证集"><a href="#验证集" class="headerlink" title="验证集"></a>验证集</h2><p>If you wish to apply KNN in practice, proceed as follows:</p>
 <ol>
 <li>Split your training data randomly into train/val splits.</li>
 <li>As a rule of thumb, between <strong>70~90%</strong> of your data usually goes to the train split. If there are many hyperparameters to estimate, you should err on the side of having larger validation set,</li>
@@ -498,7 +496,7 @@
 </ol>
 <h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p><strong>Overview:</strong>A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
 <p>公式简化如下：</p>
-<center>$$f(x<em>{i},W,b)=Wx</em>{i}+b$$</center>
+<center>$$f(x_{i},W,b)=Wx_{i}+b$$</center>
     
 
     
@@ -841,6 +839,26 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 <!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script type="text/javascript" src="/js/mathjax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 <script type="text/ls-javascript" id="lazy-load">
     // Offer LazyLoad
