@@ -279,8 +279,6 @@
 
     <!-- Custom Head -->
     
-    
-    <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
@@ -331,7 +329,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#python学习中一些注意点"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Python学习中一些注意点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-参数默认值"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 一、参数默认值</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Python学习中一些注意点"><span class="post-toc-number">1.</span> <span class="post-toc-text">Python学习中一些注意点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、参数默认值"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、参数默认值</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -490,36 +488,29 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="python学习中一些注意点"><a class="markdownIt-Anchor" href="#python学习中一些注意点"></a> Python学习中一些注意点</h1>
-<h2 id="一-参数默认值"><a class="markdownIt-Anchor" href="#一-参数默认值"></a> 一、参数默认值</h2>
-<p>使用参数默认值时，必须小心指定了可变动对象时的一个陷阱，Python在执行到def时，就会按照定义创建相关的资源，如下：</p>
-<pre class="highlight"><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">prepend</span><span class="params">(elem, lt = [])</span>:</span>
-	lt.insert(<span class="number">0</span>, elem)
-	<span class="keyword">return</span> lt
+        <h1 id="Python学习中一些注意点"><a href="#Python学习中一些注意点" class="headerlink" title="Python学习中一些注意点"></a>Python学习中一些注意点</h1><h2 id="一、参数默认值"><a href="#一、参数默认值" class="headerlink" title="一、参数默认值"></a>一、参数默认值</h2><p>使用参数默认值时，必须小心指定了可变动对象时的一个陷阱，Python在执行到def时，就会按照定义创建相关的资源，如下：</p>
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def prepend(elem, lt = []):
+    lt.insert(0, elem)
+    return lt
 
 
-print(prepend(<span class="number">10</span>))
-print(prepend(<span class="number">10</span>, [<span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>]))
-print(prepend(<span class="number">20</span>))
-
-</code></pre>
-<p>结果如下：<br>
-<img src="/pictures/python1.png" alt="python1"><br>
-在上例中，lt默认值设置为[]，由于def是条语句，执行到def的函数定义时就创建了[]，而这个列表对象会一直存在，如果没有指定lt，使用的一直就会使一开始指定的列表对象，因此随着每次调用都不指定lt的值，前置的目标列表都会是同一个列表，因此会出现上面的问题。</p>
+print(prepend(10))
+print(prepend(10, [20, 30, 40]))
+print(prepend(20))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果如下：<br><img src="/pictures/python1.png" alt="python1"><br>在上例中，lt默认值设置为[]，由于def是条语句，执行到def的函数定义时就创建了[]，而这个列表对象会一直存在，如果没有指定lt，使用的一直就会使一开始指定的列表对象，因此随着每次调用都不指定lt的值，前置的目标列表都会是同一个列表，因此会出现上面的问题。</p>
 <p>想要避免这样的问题，可以将参数默认值设置为None，并且在函数中指定真正的默认值，如下:</p>
-<pre class="highlight"><code class="python"><span class="function"><span class="keyword">def</span> <span class="title">prepend</span><span class="params">(elem, lt = None)</span>:</span>
-	lt = lt <span class="keyword">if</span> lt <span class="keyword">else</span> []
-	lt.insert(<span class="number">0</span>, elem)
-	<span class="keyword">return</span> lt
+<pre class="line-numbers language-lang-python"><code class="language-lang-python">def prepend(elem, lt = None):
+    lt = lt if lt else []
+    lt.insert(0, elem)
+    return lt
 
 
-print(prepend(<span class="number">10</span>))
-print(prepend(<span class="number">10</span>, [<span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>]))
-print(prepend(<span class="number">20</span>))
-
-</code></pre>
-<p>结果如下：<br>
-<img src="/pictures/python2.png" alt="python2"></p>
+print(prepend(10))
+print(prepend(10, [20, 30, 40]))
+print(prepend(20))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果如下：<br><img src="/pictures/python2.png" alt="python2"></p>
 
     
 

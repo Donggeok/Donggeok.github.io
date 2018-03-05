@@ -279,8 +279,6 @@
 
     <!-- Custom Head -->
     
-    
-    <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="/css/prism-base16-ateliersulphurpool.light.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
@@ -331,7 +329,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结果"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 结果</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结果"><span class="post-toc-number">3.</span> <span class="post-toc-text">结果</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -490,124 +488,113 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>按照上篇博客所写的流程，可以创建第一个Windows程序：</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>按照上篇博客所写的流程，可以创建第一个Windows程序：  </p>
 <blockquote>
 <ol>
-<li>定义WinMain()函数</li>
-</ol>
-</blockquote>
-<ol start="2">
-<li>创建一个窗口类<br>
-2.1 设计窗口<br>
-2.2 创建窗口<br>
-2.3 注册窗口<br>
-2.4 显示，更新窗口</li>
-<li>消息队列</li>
+<li>定义WinMain()函数  </li>
+<li>创建一个窗口类<br>2.1 设计窗口<br>2.2 创建窗口<br>2.3 注册窗口<br>2.4 显示，更新窗口  </li>
+<li>消息队列  </li>
 <li>窗口过程函数</li>
 </ol>
+</blockquote>
 <hr>
-<h1 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h1>
-<pre class="highlight"><code class="cpp"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span>
-<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;tchar.h&gt;</span></span>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">#include <windows.h>
+#include <stdio.h>
+#include <tchar.h>
 
-<span class="function">LRESULT CALLBACK <span class="title">WindowProc</span><span class="params">(
-	HWND   hwnd,
-	UINT   uMsg,
-	WPARAM wParam,
-	LPARAM lParam
-)</span></span>;
+LRESULT CALLBACK WindowProc(
+    HWND   hwnd,
+    UINT   uMsg,
+    WPARAM wParam,
+    LPARAM lParam
+);
 
-<span class="function"><span class="keyword">int</span> WINAPI <span class="title">WinMain</span><span class="params">(
-	HINSTANCE    hInstance,        <span class="comment">//当前程序运行实例句柄</span>
-	HINSTANCE    hPrevInstance,    <span class="comment">//当前实例的前一个实例句柄，一般为NULL</span>
-	LPSTR        lpCmdLine,        <span class="comment">//命令行参数</span>
-	<span class="keyword">int</span>          nCmdShow
-)</span>
-</span>{
-	<span class="comment">//设计一个窗口类</span>
-	WNDCLASS wndcls;
-	wndcls.cbClsExtra = <span class="number">0</span>;
-	wndcls.cbWndExtra = <span class="number">0</span>;
-	wndcls.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
-	wndcls.hCursor = LoadCursor(<span class="literal">NULL</span>, IDC_ARROW);
-	wndcls.hIcon = LoadIcon(<span class="literal">NULL</span>, IDI_QUESTION);
-	wndcls.hInstance = hInstance;
-	wndcls.lpfnWndProc = WindowProc;
-	wndcls.lpszClassName = _T(<span class="string">"donggeok"</span>);
-	wndcls.lpszMenuName = <span class="literal">NULL</span>;
-	wndcls.style = CS_HREDRAW | CS_VREDRAW;
-	<span class="comment">//注册窗口类</span>
-	RegisterClass(&amp;wndcls);
-	<span class="comment">//创建窗口</span>
-	HWND hwnd;
-	hwnd = CreateWindow(_T(<span class="string">"donggeok"</span>), _T(<span class="string">"hehe"</span>), WS_OVERLAPPEDWINDOW, <span class="number">0</span>,
-		<span class="number">0</span>, <span class="number">600</span>, <span class="number">400</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, hInstance, <span class="literal">NULL</span>);
-	<span class="comment">//显示及更新窗口</span>
-	ShowWindow(hwnd, SW_NORMAL);
-	UpdateWindow(hwnd);
+int WINAPI WinMain(
+    HINSTANCE    hInstance,        //当前程序运行实例句柄
+    HINSTANCE    hPrevInstance,    //当前实例的前一个实例句柄，一般为NULL
+    LPSTR        lpCmdLine,        //命令行参数
+    int          nCmdShow
+)
+{
+    //设计一个窗口类
+    WNDCLASS wndcls;
+    wndcls.cbClsExtra = 0;
+    wndcls.cbWndExtra = 0;
+    wndcls.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+    wndcls.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wndcls.hIcon = LoadIcon(NULL, IDI_QUESTION);
+    wndcls.hInstance = hInstance;
+    wndcls.lpfnWndProc = WindowProc;
+    wndcls.lpszClassName = _T("donggeok");
+    wndcls.lpszMenuName = NULL;
+    wndcls.style = CS_HREDRAW | CS_VREDRAW;
+    //注册窗口类
+    RegisterClass(&wndcls);
+    //创建窗口
+    HWND hwnd;
+    hwnd = CreateWindow(_T("donggeok"), _T("hehe"), WS_OVERLAPPEDWINDOW, 0,
+        0, 600, 400, NULL, NULL, hInstance, NULL);
+    //显示及更新窗口
+    ShowWindow(hwnd, SW_NORMAL);
+    UpdateWindow(hwnd);
 
-	<span class="comment">//定义消息结构体，消息循环</span>
-	MSG msg;
-	<span class="keyword">while</span> (GetMessage(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>)) {
-		TranslateMessage(&amp;msg);
-		DispatchMessage(&amp;msg);
-	}
-	<span class="keyword">return</span> msg.wParam;
+    //定义消息结构体，消息循环
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+    return msg.wParam;
 }
 
-<span class="comment">//消息过程函数</span>
-<span class="function">LRESULT CALLBACK <span class="title">WindowProc</span><span class="params">(
-	HWND   hwnd,
-	UINT   uMsg,
-	WPARAM wParam,
-	LPARAM lParam
-)</span>
-</span>{
-	<span class="keyword">switch</span> (uMsg) {
-	<span class="keyword">case</span> WM_CHAR:
-	{
-	<span class="keyword">char</span> szChar[<span class="number">30</span>] = { <span class="number">0</span> };
-		sprintf_s(szChar, <span class="string">"char code is %c"</span>, wParam);
-		WCHAR wszStr[<span class="number">256</span>];
-		<span class="built_in">memset</span>(wszStr, <span class="number">0</span>, <span class="keyword">sizeof</span>(wszStr));
-		MultiByteToWideChar(CP_ACP, <span class="number">0</span>, szChar, <span class="built_in">strlen</span>(szChar) + <span class="number">1</span>, wszStr, <span class="keyword">sizeof</span>(wszStr) / <span class="keyword">sizeof</span>(wszStr[<span class="number">0</span>]));
-		MessageBox(hwnd, wszStr, _T(<span class="string">"char"</span>), <span class="number">0</span>);
-		<span class="keyword">break</span>;
-	}	
-	<span class="keyword">case</span> WM_LBUTTONDOWN:
-		MessageBox(hwnd, _T(<span class="string">"mouse clicked"</span>), _T(<span class="string">"message"</span>), <span class="number">0</span>);
-		HDC hdc;
-		hdc = GetDC(hwnd);
-		TextOut(hdc, <span class="number">0</span>, <span class="number">50</span>, _T(<span class="string">"heheheh"</span>), <span class="built_in">strlen</span>(<span class="string">"heheheh"</span>));
-		ReleaseDC(hwnd, hdc);
-		<span class="keyword">break</span>;
-	<span class="keyword">case</span> WM_PAINT:
-		HDC hDc;
-		PAINTSTRUCT ps;
-		hDc = BeginPaint(hwnd, &amp;ps);
-		TextOut(hDc, <span class="number">0</span>, <span class="number">0</span>, _T(<span class="string">"aaaaa"</span>), <span class="number">5</span>);
-		EndPaint(hwnd, &amp;ps);
-		<span class="keyword">break</span>;
-	<span class="keyword">case</span> WM_CLOSE:
-		<span class="keyword">if</span> (IDYES == MessageBox(hwnd, _T(<span class="string">"really end?"</span>), _T(<span class="string">"message"</span>), MB_YESNO)) {
-			DestroyWindow(hwnd);
-		}
-		<span class="keyword">break</span>;
-	<span class="keyword">case</span> WM_DESTROY:
-		PostQuitMessage(<span class="number">0</span>);
-		<span class="keyword">break</span>;
-	<span class="keyword">default</span>:
-		<span class="keyword">return</span> DefWindowProc(hwnd, uMsg, wParam, lParam);
-	}
-	<span class="keyword">return</span> <span class="number">0</span>;
+//消息过程函数
+LRESULT CALLBACK WindowProc(
+    HWND   hwnd,
+    UINT   uMsg,
+    WPARAM wParam,
+    LPARAM lParam
+)
+{
+    switch (uMsg) {
+    case WM_CHAR:
+    {
+    char szChar[30] = { 0 };
+        sprintf_s(szChar, "char code is %c", wParam);
+        WCHAR wszStr[256];
+        memset(wszStr, 0, sizeof(wszStr));
+        MultiByteToWideChar(CP_ACP, 0, szChar, strlen(szChar) + 1, wszStr, sizeof(wszStr) / sizeof(wszStr[0]));
+        MessageBox(hwnd, wszStr, _T("char"), 0);
+        break;
+    }    
+    case WM_LBUTTONDOWN:
+        MessageBox(hwnd, _T("mouse clicked"), _T("message"), 0);
+        HDC hdc;
+        hdc = GetDC(hwnd);
+        TextOut(hdc, 0, 50, _T("heheheh"), strlen("heheheh"));
+        ReleaseDC(hwnd, hdc);
+        break;
+    case WM_PAINT:
+        HDC hDc;
+        PAINTSTRUCT ps;
+        hDc = BeginPaint(hwnd, &ps);
+        TextOut(hDc, 0, 0, _T("aaaaa"), 5);
+        EndPaint(hwnd, &ps);
+        break;
+    case WM_CLOSE:
+        if (IDYES == MessageBox(hwnd, _T("really end?"), _T("message"), MB_YESNO)) {
+            DestroyWindow(hwnd);
+        }
+        break;
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        break;
+    default:
+        return DefWindowProc(hwnd, uMsg, wParam, lParam);
+    }
+    return 0;
 }
-</code></pre>
-<h1 id="结果"><a class="markdownIt-Anchor" href="#结果"></a> 结果</h1>
-<p><img src="/pictures/windows2.png" alt="按下键盘a之后"><br>
-<img src="/pictures/windows3.PNG" alt="鼠标点击之后"><br>
-<img src="/pictures/windows4.PNG" alt="关闭窗口时"></p>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="/pictures/windows2.png" alt="按下键盘a之后"><br><img src="/pictures/windows3.PNG" alt="鼠标点击之后"><br><img src="/pictures/windows4.PNG" alt="关闭窗口时"></p>
 
     
 
