@@ -492,27 +492,29 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="Python学习中一些注意点"><a href="#Python学习中一些注意点" class="headerlink" title="Python学习中一些注意点"></a>Python学习中一些注意点</h1><h2 id="一、参数默认值"><a href="#一、参数默认值" class="headerlink" title="一、参数默认值"></a>一、参数默认值</h2><p>使用参数默认值时，必须小心指定了可变动对象时的一个陷阱，Python在执行到def时，就会按照定义创建相关的资源，如下：</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">def prepend(elem, lt = []):
-    lt.insert(0, elem)
-    return lt
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">prepend</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> lt <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    lt<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> elem<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> lt
 
 
-print(prepend(10))
-print(prepend(10, [20, 30, 40]))
-print(prepend(20))
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prepend<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prepend<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prepend<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结果如下：<br><img src="/pictures/python1.png" alt="python1"><br>在上例中，lt默认值设置为[]，由于def是条语句，执行到def的函数定义时就创建了[]，而这个列表对象会一直存在，如果没有指定lt，使用的一直就会使一开始指定的列表对象，因此随着每次调用都不指定lt的值，前置的目标列表都会是同一个列表，因此会出现上面的问题。</p>
 <p>想要避免这样的问题，可以将参数默认值设置为None，并且在函数中指定真正的默认值，如下:</p>
-<pre class="line-numbers language-lang-python"><code class="language-lang-python">def prepend(elem, lt = None):
-    lt = lt if lt else []
-    lt.insert(0, elem)
-    return lt
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">prepend</span><span class="token punctuation">(</span>elem<span class="token punctuation">,</span> lt <span class="token operator">=</span> None<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    lt <span class="token operator">=</span> lt <span class="token keyword">if</span> lt <span class="token keyword">else</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    lt<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> elem<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> lt
 
 
-print(prepend(10))
-print(prepend(10, [20, 30, 40]))
-print(prepend(20))
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prepend<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prepend<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prepend<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结果如下：<br><img src="/pictures/python2.png" alt="python2"></p>
 
     
@@ -899,22 +901,24 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+            </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+        </body>
     
 </html>

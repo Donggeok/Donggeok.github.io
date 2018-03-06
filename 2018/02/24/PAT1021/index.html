@@ -498,106 +498,107 @@
         <h1 id="PAT1021-Deepest-Root-25"><a href="#PAT1021-Deepest-Root-25" class="headerlink" title="PAT1021. Deepest Root (25)"></a>PAT1021. Deepest Root (25)</h1><hr>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1021" target="_blank" rel="external">题目</a></h2><hr>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <vector>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-int getDepthOfTreeByRoot(const vector<vector<int>> &Graph, vector<bool> &visited, int root) {
-    int depth = 0;
-    bool hasChildFlag = false;
-    visited[root] = true;
-    for (int i = 0; i < Graph[root].size(); ++i) {
-        if (!visited[Graph[root][i]]) {
-            hasChildFlag = true;
-            int curDepth = getDepthOfTreeByRoot(Graph, visited, Graph[root][i]);
-            if (depth < curDepth) {
-                depth = curDepth;
-            }
-        }
-    }
-    if (hasChildFlag) {
-        depth++;
-    }
-    return depth;
-}
+<span class="token keyword">int</span> <span class="token function">getDepthOfTreeByRoot</span><span class="token punctuation">(</span><span class="token keyword">const</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token operator">&amp;</span>Graph<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token operator">&amp;</span>visited<span class="token punctuation">,</span> <span class="token keyword">int</span> root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> depth <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> hasChildFlag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    visited<span class="token punctuation">[</span>root<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> Graph<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>Graph<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            hasChildFlag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> curDepth <span class="token operator">=</span> <span class="token function">getDepthOfTreeByRoot</span><span class="token punctuation">(</span>Graph<span class="token punctuation">,</span> visited<span class="token punctuation">,</span> Graph<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>depth <span class="token operator">&lt;</span> curDepth<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                depth <span class="token operator">=</span> curDepth<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hasChildFlag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        depth<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> depth<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-void getRootsOfMaxDepth(vector<int> &roots, const vector<vector<int>> &Graph) {
-    int MaxDepth = -1;
-    int num = Graph.size();
-    for (int i = 1; i < num; ++i) {
-        vector<bool> visited(num, false);
-        int depth = getDepthOfTreeByRoot(Graph, visited, i);
-        if (depth > MaxDepth) {
-            MaxDepth = depth;
-            roots.clear();
-            roots.push_back(i);
-        }
-        else if (depth == MaxDepth) {
-            roots.push_back(i);
-        }
-    }
-}
+<span class="token keyword">void</span> <span class="token function">getRootsOfMaxDepth</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">&amp;</span>roots<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token operator">&amp;</span>Graph<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> MaxDepth <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> num <span class="token operator">=</span> Graph<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> num<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token function">visited</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> depth <span class="token operator">=</span> <span class="token function">getDepthOfTreeByRoot</span><span class="token punctuation">(</span>Graph<span class="token punctuation">,</span> visited<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>depth <span class="token operator">></span> MaxDepth<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            MaxDepth <span class="token operator">=</span> depth<span class="token punctuation">;</span>
+            roots<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            roots<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>depth <span class="token operator">==</span> MaxDepth<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            roots<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-void Traversal(const vector<vector<int>> &Graph, int root, vector<bool> &visited) {
-    visited[root] = true;
-    for (int i = 0; i < Graph[root].size(); ++i) {
-        if (!visited[Graph[root][i]]) {
-            Traversal(Graph, Graph[root][i], visited);
-        }
-    }
-}
+<span class="token keyword">void</span> <span class="token function">Traversal</span><span class="token punctuation">(</span><span class="token keyword">const</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token operator">&amp;</span>Graph<span class="token punctuation">,</span> <span class="token keyword">int</span> root<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token operator">&amp;</span>visited<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    visited<span class="token punctuation">[</span>root<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> Graph<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>Graph<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">Traversal</span><span class="token punctuation">(</span>Graph<span class="token punctuation">,</span> Graph<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> visited<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-int nextVisited(vector<bool> &visited) {
-    int index = 1;
-    for (; index < visited.size(); ++index) {
-        if (visited[index] == false) {
-            return index;
-        }
-    }
-    if(index == visited.size())
-        return 0;
-}
+<span class="token keyword">int</span> <span class="token function">nextVisited</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token operator">&amp;</span>visited<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> visited<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>visited<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> index<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>index <span class="token operator">==</span> visited<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-int getComponentNum(const vector<vector<int>> &Graph) {
-    vector<bool> visited(Graph.size(), false);
-    int index = nextVisited(visited);
-    int k = 0;
-    while (index) {
-        Traversal(Graph, index, visited);
-        ++k;
-        index = nextVisited(visited);
-    }
-    return k;
-}
+<span class="token keyword">int</span> <span class="token function">getComponentNum</span><span class="token punctuation">(</span><span class="token keyword">const</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token operator">&amp;</span>Graph<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token function">visited</span><span class="token punctuation">(</span>Graph<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token function">nextVisited</span><span class="token punctuation">(</span>visited<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">Traversal</span><span class="token punctuation">(</span>Graph<span class="token punctuation">,</span> index<span class="token punctuation">,</span> visited<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">++</span>k<span class="token punctuation">;</span>
+        index <span class="token operator">=</span> <span class="token function">nextVisited</span><span class="token punctuation">(</span>visited<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> k<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-int main() {
-    int N;
-    cin >> N;
-    vector<vector<int>> Graph(N + 1);
-    for (int i = 0; i < N - 1; ++i) {
-        int a1, a2;
-        cin >> a1 >> a2;
-        Graph[a1].push_back(a2);
-        Graph[a2].push_back(a1);
-    }
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> N<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> N<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">Graph</span><span class="token punctuation">(</span>N <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a1<span class="token punctuation">,</span> a2<span class="token punctuation">;</span>
+        cin <span class="token operator">>></span> a1 <span class="token operator">>></span> a2<span class="token punctuation">;</span>
+        Graph<span class="token punctuation">[</span>a1<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>a2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Graph<span class="token punctuation">[</span>a2<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>a1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    int k = getComponentNum(Graph);
-    if (k == 1) {
-        vector<int> resultRoots;
-        getRootsOfMaxDepth(resultRoots, Graph);
-        for (auto elem : resultRoots) {
-            cout << elem << endl;
-        }
-    }
-    else {
-        cout << "Error: " << k << " components";
-    }
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token function">getComponentNum</span><span class="token punctuation">(</span>Graph<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> resultRoots<span class="token punctuation">;</span>
+        <span class="token function">getRootsOfMaxDepth</span><span class="token punctuation">(</span>resultRoots<span class="token punctuation">,</span> Graph<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> elem <span class="token operator">:</span> resultRoots<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cout <span class="token operator">&lt;&lt;</span> elem <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Error: "</span> <span class="token operator">&lt;&lt;</span> k <span class="token operator">&lt;&lt;</span> <span class="token string">" components"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题是首先先判断该图是不是一棵树，如果是，求树的深度，如果不是，求几部分。判断该图是树的方法就是遍历整个图，如果一次遍历完就是树。求树的深度也很简单，用递归的方法，分别求子树的深度，取得某一个子树深度最大的数+1即可，如上述代码所写即可。图的数据结构类似邻接链表，不过是用vector来实现的。</p>
 
@@ -985,22 +986,24 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+            </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+        </body>
     
 </html>

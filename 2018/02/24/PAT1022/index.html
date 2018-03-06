@@ -498,130 +498,131 @@
         <h1 id="PAT1022-Digital-Library-30"><a href="#PAT1022-Digital-Library-30" class="headerlink" title="PAT1022. Digital Library (30)"></a>PAT1022. Digital Library (30)</h1><hr>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://www.patest.cn/contests/pat-a-practise/1022" target="_blank" rel="external">题目</a></h2><hr>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-#include <iostream>
-#include <vector>
-#include <cstring>
-#include <string>
-#include <map>
-#include <functional>
-#include <algorithm>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;map></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;functional></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-// thread un-safe, single thread is safe
-void splitSpace(string rawString, vector<string> &subStrings) {
-    char rawChars[60];
-    strcpy(rawChars, rawString.c_str());
-    char* pch = strtok(rawChars, " ");
-    while (pch != NULL) {
-        string subString(pch);
-        subStrings.push_back(subString);
-        pch = strtok(NULL, " ");
-    }
-}
+<span class="token comment" spellcheck="true">// thread un-safe, single thread is safe</span>
+<span class="token keyword">void</span> <span class="token function">splitSpace</span><span class="token punctuation">(</span>string rawString<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span>subStrings<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> rawChars<span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">strcpy</span><span class="token punctuation">(</span>rawChars<span class="token punctuation">,</span> rawString<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> pch <span class="token operator">=</span> <span class="token function">strtok</span><span class="token punctuation">(</span>rawChars<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>pch <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        string <span class="token function">subString</span><span class="token punctuation">(</span>pch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subStrings<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>subString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pch <span class="token operator">=</span> <span class="token function">strtok</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-void storeInfo(map<string, vector<string>> &storeMap, string key, string ID) {
-    // exist
-    if (storeMap.find(key) != storeMap.end()) {
-        storeMap[key].push_back(ID);
-    }
-    // not exist
-    else {
-        vector<string> tmp;
-        tmp.push_back(ID);
-        storeMap.insert(make_pair(key, tmp));
-    }
-}
+<span class="token keyword">void</span> <span class="token function">storeInfo</span><span class="token punctuation">(</span>map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> <span class="token operator">&amp;</span>storeMap<span class="token punctuation">,</span> string key<span class="token punctuation">,</span> string ID<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// exist</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>storeMap<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">!=</span> storeMap<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        storeMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// not exist</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> tmp<span class="token punctuation">;</span>
+        tmp<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        storeMap<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token function">make_pair</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-void printInfo(map<string, vector<string>> &storeMap, string key) {
-    // exist
-    if (storeMap.find(key) != storeMap.end()) {
-        vector<string> tmp = storeMap[key];
-        sort(tmp.begin(), tmp.end(), less<string>());
-        for (auto elem : tmp) {
-            cout << elem << endl;
-        }
-    }
-    // not exist
-    else {
-        cout << "Not Found" << endl;
-    }
-}
+<span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span>map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> <span class="token operator">&amp;</span>storeMap<span class="token punctuation">,</span> string key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// exist</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>storeMap<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">!=</span> storeMap<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> tmp <span class="token operator">=</span> storeMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>tmp<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tmp<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> less<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> elem <span class="token operator">:</span> tmp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cout <span class="token operator">&lt;&lt;</span> elem <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// not exist</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Not Found"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-int main() {
-    ios::sync_with_stdio(false);
-    int numBook;
-    cin >> numBook;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ios<span class="token operator">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> numBook<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> numBook<span class="token punctuation">;</span>
 
-    // data struct
-    map<string, vector<string>> titleMaps;
-    map<string, vector<string>> authorMaps;
-    map<string, vector<string>> keywordMaps;
-    map<string, vector<string>> publisherMaps;
-    map<string, vector<string>> yearMaps;
+    <span class="token comment" spellcheck="true">// data struct</span>
+    map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> titleMaps<span class="token punctuation">;</span>
+    map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> authorMaps<span class="token punctuation">;</span>
+    map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> keywordMaps<span class="token punctuation">;</span>
+    map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> publisherMaps<span class="token punctuation">;</span>
+    map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">>></span> yearMaps<span class="token punctuation">;</span>
 
-    for (int i = 0; i < numBook; ++i) {
-        string ID, title, author, publisher, rawKeywords, year;
-        vector<string> keywords;
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numBook<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        string ID<span class="token punctuation">,</span> title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> publisher<span class="token punctuation">,</span> rawKeywords<span class="token punctuation">,</span> year<span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> keywords<span class="token punctuation">;</span>
 
-        cin >> ID;
-        cin.ignore();
-        getline(cin, title);
-        getline(cin, author);
-        getline(cin, rawKeywords);
-        splitSpace(rawKeywords, keywords);
-        getline(cin, publisher);
-        getline(cin, year);
-        // store infomation
-        storeInfo(titleMaps, title, ID);
-        storeInfo(authorMaps, author, ID);
-        for (auto elem : keywords) {
-            storeInfo(keywordMaps, elem, ID);
-        }
-        storeInfo(publisherMaps, publisher, ID);
-        storeInfo(yearMaps, year, ID);
-    }
+        cin <span class="token operator">>></span> ID<span class="token punctuation">;</span>
+        cin<span class="token punctuation">.</span><span class="token function">ignore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> author<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> rawKeywords<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">splitSpace</span><span class="token punctuation">(</span>rawKeywords<span class="token punctuation">,</span> keywords<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> publisher<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> year<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// store infomation</span>
+        <span class="token function">storeInfo</span><span class="token punctuation">(</span>titleMaps<span class="token punctuation">,</span> title<span class="token punctuation">,</span> ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">storeInfo</span><span class="token punctuation">(</span>authorMaps<span class="token punctuation">,</span> author<span class="token punctuation">,</span> ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> elem <span class="token operator">:</span> keywords<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">storeInfo</span><span class="token punctuation">(</span>keywordMaps<span class="token punctuation">,</span> elem<span class="token punctuation">,</span> ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">storeInfo</span><span class="token punctuation">(</span>publisherMaps<span class="token punctuation">,</span> publisher<span class="token punctuation">,</span> ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">storeInfo</span><span class="token punctuation">(</span>yearMaps<span class="token punctuation">,</span> year<span class="token punctuation">,</span> ID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    int numQuery;
-    vector<string> entryQuerys;
-    cin >> numQuery;
-    cin.ignore();
+    <span class="token keyword">int</span> numQuery<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> entryQuerys<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> numQuery<span class="token punctuation">;</span>
+    cin<span class="token punctuation">.</span><span class="token function">ignore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    for (int i = 0; i < numQuery; ++i) {
-        string entry;
-        getline(cin, entry);
-        entryQuerys.push_back(entry);
-    }
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numQuery<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        string entry<span class="token punctuation">;</span>
+        <span class="token function">getline</span><span class="token punctuation">(</span>cin<span class="token punctuation">,</span> entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        entryQuerys<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // print
-    for (auto item : entryQuerys) {
-        cout << item << endl;
-        char type = item[0];
-        switch (type)
-        {
-        case '1':
-            printInfo(titleMaps, item.substr(3, item.size() - 3));
-            break;
-        case '2':
-            printInfo(authorMaps, item.substr(3, item.size() - 3));
-            break;
-        case '3':
-            printInfo(keywordMaps, item.substr(3, item.size() - 3));
-            break;
-        case '4':
-            printInfo(publisherMaps, item.substr(3, item.size() - 3));
-            break;
-        case '5':
-            printInfo(yearMaps, item.substr(3, item.size() - 3));
-            break;
-        default:
-            break;
-        }
-    }
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment" spellcheck="true">// print</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> item <span class="token operator">:</span> entryQuerys<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> item <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">char</span> type <span class="token operator">=</span> item<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>type<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'1'</span><span class="token operator">:</span>
+            <span class="token function">printInfo</span><span class="token punctuation">(</span>titleMaps<span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'2'</span><span class="token operator">:</span>
+            <span class="token function">printInfo</span><span class="token punctuation">(</span>authorMaps<span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'3'</span><span class="token operator">:</span>
+            <span class="token function">printInfo</span><span class="token punctuation">(</span>keywordMaps<span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'4'</span><span class="token operator">:</span>
+            <span class="token function">printInfo</span><span class="token punctuation">(</span>publisherMaps<span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string">'5'</span><span class="token operator">:</span>
+            <span class="token function">printInfo</span><span class="token punctuation">(</span>yearMaps<span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> item<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题相对比较简单（在30分的类别中来说），更多的是对输入数据和存储数据，以及调用数据的考察。使用STL中的map数据结构为主。</p>
 <pre><code>注意几个要点：
@@ -629,19 +630,20 @@ int main() {
 2. 对于书本的ID来说，推荐使用字符串，如果使用了整型，记得在输出结果的时候注意7位格式
 3. 由于c++中没有java里的split函数，所以可以注意一下splitSpace()函数（该函数中的strtok()函数是线程不安全的，由于使用到了静态内存区域），供以后使用。
 4. ios::sync_with_stdio(false);这句的意思是关闭流对象和stdio之间的同步，以提高cin，cout的速度，但是不能共用cin和scanf或者cout和printf。
-</code></pre><pre class="line-numbers language-lang-cpp"><code class="language-lang-cpp">
-// thread un-safe, single thread is safe
-void splitSpace(string rawString, vector<string> &subStrings) {
-    char rawChars[60];
-    strcpy(rawChars, rawString.c_str());
-    char* pch = strtok(rawChars, " ");
-    while (pch != NULL) {
-        string subString(pch);
-        subStrings.push_back(subString);
-        pch = strtok(NULL, " ");
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre><pre class="line-numbers language-cpp"><code class="language-cpp">
+<span class="token comment" spellcheck="true">// thread un-safe, single thread is safe</span>
+<span class="token keyword">void</span> <span class="token function">splitSpace</span><span class="token punctuation">(</span>string rawString<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span>subStrings<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> rawChars<span class="token punctuation">[</span><span class="token number">60</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">strcpy</span><span class="token punctuation">(</span>rawChars<span class="token punctuation">,</span> rawString<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> pch <span class="token operator">=</span> <span class="token function">strtok</span><span class="token punctuation">(</span>rawChars<span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>pch <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        string <span class="token function">subString</span><span class="token punctuation">(</span>pch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subStrings<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>subString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pch <span class="token operator">=</span> <span class="token function">strtok</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     
 
@@ -1027,22 +1029,24 @@ console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viose
 </script>
 
                 </main>
-            </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
+            </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+        </body>
     
 </html>
