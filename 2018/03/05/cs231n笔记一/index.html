@@ -499,8 +499,11 @@
 <li>cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。</li>
 </ol>
 <h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p><strong>Overview:</strong> A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
-<p>Simple inline $$a = b + c$$.</p>
-
+<span>$$\begin{aligned}
+\dot{x} &amp; = \sigma(y-x) \\
+\dot{y} &amp; = \rho x - y - xz \\
+\dot{z} &amp; = -\beta z + xy
+\end{aligned}$$</span><!-- Has MathJax -->
     
 
     
