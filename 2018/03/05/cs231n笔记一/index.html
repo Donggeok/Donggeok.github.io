@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Dong&#39;s Blog">
 <meta property="og:description" content="验证集If you wish to apply KNN in practice, proceed as follows:  Split your training data randomly into train/val splits. As a rule of thumb, between 70~90% of your data usually goes to the train split.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-06T01:52:00.426Z">
+<meta property="og:updated_time" content="2018-03-06T02:19:12.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n笔记一">
 <meta name="twitter:description" content="验证集If you wish to apply KNN in practice, proceed as follows:  Split your training data randomly into train/val splits. As a rule of thumb, between 70~90% of your data usually goes to the train split.">
@@ -395,11 +395,8 @@
 <li>cross-validation 更精致，但是也更费时，当training dataset比较小的时候，可以尝试。</li>
 </ol>
 <h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p><strong>Overview:</strong> A powerful approach to image classification will have two major components: <strong>score function</strong> and <strong>loss function</strong>.</p>
-<span>$$\begin{aligned}
-\dot{x} &amp; = \sigma(y-x) \\
-\dot{y} &amp; = \rho x - y - xz \\
-\dot{z} &amp; = -\beta z + xy
-\end{aligned}$$</span><!-- Has MathJax -->
+<p>$T(n) = \Theta(n)$</p>
+
       
     </div>
 
@@ -1197,24 +1194,7 @@
         showTime(Counter);
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  </script>
 
 
 
@@ -1223,6 +1203,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
