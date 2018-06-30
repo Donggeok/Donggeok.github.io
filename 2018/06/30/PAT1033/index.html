@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Sat Jun 30 2018 22:29:24 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jun 30 2018 22:40:27 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jul 01 2018 00:22:44 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "http://donggeok.com/2018/06/30/PAT1033/index.html",
     "headline": "PAT1033",
     "datePublished": "Sat Jun 30 2018 22:29:24 GMT+0800",
-    "dateModified": "Sat Jun 30 2018 22:40:27 GMT+0800",
+    "dateModified": "Sun Jul 01 2018 00:22:44 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Dong",
@@ -599,16 +599,16 @@
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>普通的贪心问题，从局部考虑问题的最优解，对于该题来说，计算油价相当于计算当前站需要加的油数即可，主要的解题思路如下：</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>该问题是一个常见的贪心问题，我们需要求得任意局部的最优解从而达到整体的最优解。对于本题而言，计算油价的最小值等价于计算如何根据油价和路程的不同，在每一个站点添加不同的油量。主要的解题思路如下：</p>
 <ol>
 <li>考虑当前站C站能否到达下一站，若能到达，转为2；若到不了则打印所能行驶的最远距离为当前站的距离加上Cmax*DperU（最远距离）。</li>
-<li>能到达的话，继续考虑以下两种情况：<ol>
-<li>在该站能到达的最远距离所途径的站中，若有价位比当前C站还低的站，则将油加到能到达此站即可。</li>
-<li>在该站能到达的最远距离所途径的站中，若所有的油价都高于C站，则在C站将油全部加满，并且到达一个油价比其他途径的站的油价都低的站后，继续上面的循环。</li>
+<li>若能到达，继续考虑以下两种情况：<ol>
+<li>在该站能到达的最远距离所途经的所有加油站中，若有价位比当前C站低的站，则将油加到能到达此站即可。</li>
+<li>在该站能到达的最远距离所途经的站中，若所有站点的油价均高于C站，则在C站将油加满，并且到达其中油价最低的站点时，继续以上循环。</li>
 </ol>
 </li>
 </ol>
-<p>以上就是解题思路，稍微较坑的就是需要考虑起始点是否有加油站，若没有，则最远的行程为0.00。</p>
+<p>解题思路如上，稍微较坑的就是需要考虑起始点是否有加油站，若没有，则最远的行程为0.00。</p>
 
         
     
