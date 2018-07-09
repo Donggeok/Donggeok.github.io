@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PAT1065]]></title>
+    <url>%2F2018%2F07%2F09%2FPAT1065%2F</url>
+    <content type="text"><![CDATA[PAT1065 A+B and C (64bit) (20) 题目 代码 #include &lt;iostream> using namespace std; int main() { int T; scanf("%d", &amp;T); int A, B; bool results[15]; for (int i = 0; i &lt; T; ++i) { long long a, b, c; scanf("%lld%lld%lld", &amp;a, &amp;b, &amp;c); long long tmp = a + b; if (a > 0 &amp;&amp; b > 0 &amp;&amp; tmp &lt;= 0) { results[i] = true; } else if (a &lt; 0 &amp;&amp; b &lt; 0 &amp;&amp; tmp >= 0) { results[i] = false; } else { if (a + b > c) { results[i] = true; } else { results[i] = false; } } } for (int i = 0; i &lt; T; ++i) { if (results[i]) { printf("Case #%d: true\n", i + 1); } else { printf("Case #%d: false\n", i + 1); } } return 0; } 总结数字范围在64bit内，所以使用long long即可，但是要考虑越界情况。]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PAT1045]]></title>
+    <url>%2F2018%2F07%2F06%2FPAT1045%2F</url>
+    <content type="text"><![CDATA[PAT1045 Favorite Color Stripe (30) 题目 代码 #include &lt;iostream> #include &lt;vector> #include &lt;algorithm> using namespace std; int main() { int N; cin >> N; int M; cin >> M; vector&lt;int> color(M); for (int i = 0; i &lt; M; ++i) { cin >> color[i]; } int L; cin >> L; vector&lt;int> stripe(L); for (int i = 0; i &lt; L; ++i) { cin >> stripe[i]; } vector&lt;vector&lt;int>> acc(L+1, vector&lt;int>(M+1)); int max_value = 0; // 动态规划 for (int i = 1; i &lt; L + 1; ++i) { for (int j = 1; j &lt; M + 1; ++j) { if (color[j-1] == stripe[i-1]) { acc[i][j] = max(acc[i - 1][j - 1], acc[i - 1][j]) + 1; } else { acc[i][j] = max(acc[i - 1][j], acc[i][j - 1]); } if (max_value &lt; acc[i][j]) { max_value = acc[i][j]; } } } cout &lt;&lt; max_value; return 0; } 总结动态规划的典型例题，可由下面公式表示：$$a[i,j]=\left{\begin{matrix}max(a[i-1,j-1],a[i-1,j])+1,\quad stripe[j]==color[i]\max(a[i-1,j],a[i,j-1]),\quad stripe[j]!=color[i]\end{matrix}\right.$$ a[i,j]代表到i位时，下一位选j时能符合题意的最大长度。stripe代表一开始未裁剪的色带，color是喜欢的色带及次序。按照上述的公式就可以得到最后的结果。 注：做动态规划这类问题时，如果没有思路，可以先尝试假设一个值，例如a[i,j]，然后去求他，绘制相应的二维数组（一般都是二维的），尝试写出公式即可求得。]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>PAT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PAT1040]]></title>
     <url>%2F2018%2F07%2F05%2FPAT1040%2F</url>
     <content type="text"><![CDATA[PAT1040 Longest Symmetric String (25) 题目 代码 #include &lt;iostream> #include &lt;string> #include &lt;algorithm> #include &lt;vector> using namespace std; int main() { char str_c[1001]; cin.getline(str_c, 1001); string str(str_c); string r_str = str; reverse(r_str.begin(), r_str.end()); // 等同于获取公共子串 int N = str.size(); vector&lt;vector&lt;int>> acc(N+1, vector&lt;int>(N+1)); // 初始化 for (int i = 0; i &lt; N + 1; ++i) { acc[i][0] = 0; acc[0][i] = 0; } int max = 0; for (int i = 0; i &lt; N; ++i) { for (int j = 0; j &lt; N; ++j) { if (str[i] == r_str[j]) { acc[i + 1][j + 1] = acc[i][j] + 1; if (max &lt; acc[i + 1][j + 1]) { max = acc[i + 1][j + 1]; } } else { acc[i + 1][j + 1] = 0; } } } cout &lt;&lt; max; return 0; } 总结该问题的解题思路很简单：求最长的对称串等同于将该串与其逆串的公共子串。求公共子串的算法和求公共子序列的算法一致且更简单，代码如上。]]></content>
